@@ -15,5 +15,10 @@ namespace Kompiuteriu_parduotuve
         {
             InitializeComponent();
         }
+
+        private void Login_button_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
