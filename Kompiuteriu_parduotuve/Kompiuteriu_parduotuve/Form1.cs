@@ -18,6 +18,7 @@ namespace Kompiuteriu_parduotuve
 
         private void Login_button_Click(object sender, EventArgs e)
         {
+            new Login_Form().ShowDialog();
 
         }
     }
