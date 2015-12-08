@@ -9,9 +9,15 @@ namespace Kompiuteriu_parduotuve
 {
     class Database
     {
-        SqlConnection conn= new SqlConnection(ConfigurationManager.ConnectionStrings["Connection.Properties.Settings.DBConnString"].ConnectionString);
-        SqlDataAdapter adapter = null;
-        DataTable dt = null;
+        public SqlConnection conn = null; 
+       public SqlDataAdapter adapter = null;
+       public DataTable dt = null;
+        public SqlCommand cmd = null;
+
+        public Database()
+        {
+            conn= new SqlConnection(ConfigurationManager.ConnectionStrings["Connection.Properties.Settings.DBConnString"].ConnectionString); 
+        }
         public void Connect()
         {
             if (conn != null && conn.State == ConnectionState.Closed)
@@ -20,16 +26,6 @@ namespace Kompiuteriu_parduotuve
 
             }
         }
-        public bool User_conn(string name, string pass)
-        {
-            adapter= new SqlDataAdapter("Select username, password From dbo.Users where username='" + name + "' and password='"+pass+"'",conn);
-            dt = new DataTable();
-            adapter.Fill(dt);
-           
-            if (dt.Rows.Count ==1)
-                return true;      
-            
-            return false;
-        }
+        
     }
 }

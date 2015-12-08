@@ -20,9 +20,20 @@ namespace Kompiuteriu_parduotuve
         {
             bool login_state=false;
             Database DB = new Database();
-            login_state=DB.User_conn(username_textbox.Text, password_textbox.Text);
+            User user = new User(DB);
+            login_state=user.User_conn(username_textbox.Text, password_textbox.Text);
             if (login_state == true)
-                Console.WriteLine(login_state);
+            {
+                new Admin_form().Show();
+                this.Close();
+            }
+        }
+
+        private void main_form_button_Click(object sender, EventArgs e)
+        {
+            Form1 main_form = new Form1();
+            main_form.Show();
+            this.Close();
         }
     }
 }
