@@ -74,12 +74,31 @@ namespace Kompiuteriu_parduotuve
         private void product_confirm_Click(object sender, EventArgs e)
         {
             Product product = new Product();
-            product.set(product_name_textbox.Text, product_category_textbox.Text, product_price_textbox.Text, product_description_textbox.Text);
+            product.set(product_name_textbox.Text, product_category_comb.SelectedValue.ToString(), product_price_textbox.Text, product_description_textbox.Text);
         }
 
         private void Admin_form_Load(object sender, EventArgs e)
         {
             refresh_table();
+            Database DB = new Database();
+            
+               Category category = new Category(false);
+                
+                    DataTable comb_dt;
+                    comb_dt=category.display_combobox(DB);
+            foreach (DataRow dr in comb_dt.Rows)
+            {
+
+                product_category_comb.DataSource = comb_dt;
+                product_category_comb.DisplayMember = "name";
+                product_category_comb.ValueMember = "id";
+
+            }
+            //product_category_comb.DataSource = comb_dt;
+
+            
+                
+            
         }
 
         private void product_grid_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -112,8 +131,8 @@ namespace Kompiuteriu_parduotuve
             foreach (DataGridViewRow row in product_grid.SelectedRows)
             {
                 product_selected_id = row.Cells[0].Value.ToString();
+                product_category_comb.SelectedValue= row.Cells[2].Value.ToString();
                 product_name_textbox.Text= row.Cells[1].Value.ToString();
-                product_category_textbox.Text= row.Cells[2].Value.ToString();
                 product_price_textbox.Text = row.Cells[3].Value.ToString();
                 product_description_textbox.Text = row.Cells[4].Value.ToString();
                 Console.WriteLine(product_selected_id);
@@ -158,7 +177,7 @@ namespace Kompiuteriu_parduotuve
                     using (Category category = new Category(true))
                 {
                     
-                    category.set(int.Parse(category_id_textobx.Text), category_name_textbox.Text, DB);
+                    category.set(0, category_name_textbox.Text, DB);
                     
                     
                 }
@@ -171,6 +190,11 @@ namespace Kompiuteriu_parduotuve
 
                     }
             }
+        }
+
+        private void product_category_comb_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           ////Console.WriteLine(product_category_comb.SelectedValue);
         }
     }
 }

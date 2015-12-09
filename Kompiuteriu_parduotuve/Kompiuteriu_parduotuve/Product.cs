@@ -34,8 +34,19 @@ namespace Kompiuteriu_parduotuve
         }
         private void save()
         {
+            /*  try
+              {
+                  DB.Connect(); //asociacija
+                  DB.cmd = new System.Data.SqlClient.SqlCommand("INSERT INTO dbo.Users(ID,username,password,type) values (" + ID + ",'" + username + "','" + password + "'," + type + ")", DB.conn);
+                  DB.cmd.ExecuteNonQuery();
+              }
+              catch (Exception ex)
+              {
+                  Console.WriteLine(ex);
+                  return false;
+              }*/
             DB.Connect();
-            DB.cmd = new System.Data.SqlClient.SqlCommand("INSERT INTO dbo.Product(name,category,price,description) values ('" + name + "'," + category + ",'" + price + "','" + description + "')", DB.conn);
+            DB.cmd = new System.Data.SqlClient.SqlCommand("INSERT INTO dbo.Product(name,category,price,description) values ('" + name + "','" + category + "','" + price + "','" + description + "')", DB.conn);
             DB.cmd.ExecuteNonQuery();
         }
         private void delete()

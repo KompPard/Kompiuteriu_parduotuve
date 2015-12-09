@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Data;
 namespace Kompiuteriu_parduotuve
 {
     class Category : IDisposable
@@ -42,6 +42,14 @@ namespace Kompiuteriu_parduotuve
         public void Dispose()
         {
             GC.SuppressFinalize(this);
+        }
+        public DataTable display_combobox(Database DB)
+        {
+            DB.adapter = new System.Data.SqlClient.SqlDataAdapter("Select * From dbo.Category", DB.conn);
+            DB.dt = new System.Data.DataTable();
+            DB.adapter.Fill(DB.dt);
+
+            return DB.dt;
         }
     }
 }

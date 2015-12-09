@@ -39,7 +39,6 @@
             this.product_grid = new System.Windows.Forms.DataGridView();
             this.product_description_textbox = new System.Windows.Forms.RichTextBox();
             this.product_name_textbox = new System.Windows.Forms.TextBox();
-            this.product_category_textbox = new System.Windows.Forms.TextBox();
             this.product_price_textbox = new System.Windows.Forms.TextBox();
             this.product_confirm = new System.Windows.Forms.Button();
             this.update_button = new System.Windows.Forms.Button();
@@ -59,7 +58,7 @@
             this.category_name_textbox = new System.Windows.Forms.TextBox();
             this.confirm_category = new System.Windows.Forms.Button();
             this.update_category = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.product_category_comb = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.product_grid)).BeginInit();
@@ -165,23 +164,16 @@
             this.product_name_textbox.Size = new System.Drawing.Size(100, 20);
             this.product_name_textbox.TabIndex = 10;
             // 
-            // product_category_textbox
-            // 
-            this.product_category_textbox.Location = new System.Drawing.Point(54, 292);
-            this.product_category_textbox.Name = "product_category_textbox";
-            this.product_category_textbox.Size = new System.Drawing.Size(100, 20);
-            this.product_category_textbox.TabIndex = 11;
-            // 
             // product_price_textbox
             // 
-            this.product_price_textbox.Location = new System.Drawing.Point(55, 318);
+            this.product_price_textbox.Location = new System.Drawing.Point(54, 289);
             this.product_price_textbox.Name = "product_price_textbox";
             this.product_price_textbox.Size = new System.Drawing.Size(100, 20);
             this.product_price_textbox.TabIndex = 12;
             // 
             // product_confirm
             // 
-            this.product_confirm.Location = new System.Drawing.Point(68, 340);
+            this.product_confirm.Location = new System.Drawing.Point(67, 311);
             this.product_confirm.Name = "product_confirm";
             this.product_confirm.Size = new System.Drawing.Size(75, 23);
             this.product_confirm.TabIndex = 14;
@@ -191,7 +183,7 @@
             // 
             // update_button
             // 
-            this.update_button.Location = new System.Drawing.Point(68, 366);
+            this.update_button.Location = new System.Drawing.Point(67, 337);
             this.update_button.Name = "update_button";
             this.update_button.Size = new System.Drawing.Size(75, 23);
             this.update_button.TabIndex = 15;
@@ -201,7 +193,7 @@
             // 
             // delete_button
             // 
-            this.delete_button.Location = new System.Drawing.Point(68, 395);
+            this.delete_button.Location = new System.Drawing.Point(67, 366);
             this.delete_button.Name = "delete_button";
             this.delete_button.Size = new System.Drawing.Size(75, 23);
             this.delete_button.TabIndex = 16;
@@ -257,7 +249,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(0, 318);
+            this.label6.Location = new System.Drawing.Point(-1, 289);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(34, 13);
             this.label6.TabIndex = 22;
@@ -323,13 +315,14 @@
             this.update_category.UseVisualStyleBackColor = true;
             this.update_category.Click += new System.EventHandler(this.update_category_Click);
             // 
-            // comboBox1
+            // product_category_comb
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(54, 262);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(100, 21);
-            this.comboBox1.TabIndex = 27;
+            this.product_category_comb.FormattingEnabled = true;
+            this.product_category_comb.Location = new System.Drawing.Point(54, 262);
+            this.product_category_comb.Name = "product_category_comb";
+            this.product_category_comb.Size = new System.Drawing.Size(100, 21);
+            this.product_category_comb.TabIndex = 27;
+            this.product_category_comb.SelectedIndexChanged += new System.EventHandler(this.product_category_comb_SelectedIndexChanged);
             // 
             // label7
             // 
@@ -356,7 +349,7 @@
             this.ClientSize = new System.Drawing.Size(967, 442);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.product_category_comb);
             this.Controls.Add(this.update_category);
             this.Controls.Add(this.confirm_category);
             this.Controls.Add(this.category_name_textbox);
@@ -371,7 +364,6 @@
             this.Controls.Add(this.update_button);
             this.Controls.Add(this.product_confirm);
             this.Controls.Add(this.product_price_textbox);
-            this.Controls.Add(this.product_category_textbox);
             this.Controls.Add(this.product_name_textbox);
             this.Controls.Add(this.product_description_textbox);
             this.Controls.Add(this.product_grid);
@@ -405,7 +397,6 @@
         private System.Windows.Forms.DataGridView product_grid;
         private System.Windows.Forms.RichTextBox product_description_textbox;
         private System.Windows.Forms.TextBox product_name_textbox;
-        private System.Windows.Forms.TextBox product_category_textbox;
         private System.Windows.Forms.TextBox product_price_textbox;
         private System.Windows.Forms.Button product_confirm;
         private System.Windows.Forms.Button update_button;
@@ -425,7 +416,7 @@
         private System.Windows.Forms.TextBox category_name_textbox;
         private System.Windows.Forms.Button confirm_category;
         private System.Windows.Forms.Button update_category;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox product_category_comb;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
     }
