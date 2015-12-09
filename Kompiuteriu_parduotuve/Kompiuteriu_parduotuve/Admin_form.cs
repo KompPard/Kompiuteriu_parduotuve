@@ -52,24 +52,7 @@ namespace Kompiuteriu_parduotuve
             type_textbox.Visible = false;
             
         }
-        void HIDE()
-        {
-            ID_textbox.Visible = false;
-            username_textbox.Visible = false;
-            password_textbox.Visible = false;
-            type_textbox.Visible = false;
-            confirm_worker_button.Visible = false;
-            hide_button.Visible = false;
-        }
-        void SHOW()
-        {
-            ID_textbox.Visible = true;
-            username_textbox.Visible = true;
-            password_textbox.Visible = true;
-            type_textbox.Visible = true;
-            confirm_worker_button.Visible = true;
-            hide_button.Visible = true;
-        }
+
 
         private void product_confirm_Click(object sender, EventArgs e)
         {
@@ -80,25 +63,24 @@ namespace Kompiuteriu_parduotuve
         private void Admin_form_Load(object sender, EventArgs e)
         {
             refresh_table();
-            Database DB = new Database();
-            
-               Category category = new Category(false);
-                
-                    DataTable comb_dt;
-                    comb_dt=category.display_combobox(DB);
-            foreach (DataRow dr in comb_dt.Rows)
+            using (Database DB = new Database())
             {
 
-                product_category_comb.DataSource = comb_dt;
-                product_category_comb.DisplayMember = "name";
-                product_category_comb.ValueMember = "id";
+                using (Category category = new Category(false))
+                {
 
+                    DataTable comb_dt;
+                    comb_dt = category.display_combobox(DB);
+                    foreach (DataRow dr in comb_dt.Rows)
+                    {
+
+                        product_category_comb.DataSource = comb_dt;
+                        product_category_comb.DisplayMember = "name";
+                        product_category_comb.ValueMember = "id";
+
+                    }
+                }
             }
-            //product_category_comb.DataSource = comb_dt;
-
-            
-                
-            
         }
 
         private void product_grid_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -127,7 +109,6 @@ namespace Kompiuteriu_parduotuve
         }
         private void product_grid_SelectionChanged(object sender, EventArgs e)
         {
-
             foreach (DataGridViewRow row in product_grid.SelectedRows)
             {
                 product_selected_id = row.Cells[0].Value.ToString();
@@ -137,8 +118,6 @@ namespace Kompiuteriu_parduotuve
                 product_description_textbox.Text = row.Cells[4].Value.ToString();
                 Console.WriteLine(product_selected_id);
             }
-            
-            
         }
 
         private void update_button_Click(object sender, EventArgs e)
@@ -175,26 +154,34 @@ namespace Kompiuteriu_parduotuve
             {
                 if (funkc == true)
                     using (Category category = new Category(true))
-                {
-                    
-                    category.set(0, category_name_textbox.Text, DB);
-                    
-                    
-                }
+                        category.set(0, category_name_textbox.Text, DB);
                 else
                     using (Category category = new Category(false))
-                    {
-
                         category.set(int.Parse(category_id_textobx.Text), category_name_textbox.Text, DB);
-
-
-                    }
             }
         }
 
         private void product_category_comb_SelectedIndexChanged(object sender, EventArgs e)
         {
-           ////Console.WriteLine(product_category_comb.SelectedValue);
+           Console.WriteLine(product_category_comb.SelectedValue);
+        }
+        void HIDE()
+        {
+            ID_textbox.Visible = false;
+            username_textbox.Visible = false;
+            password_textbox.Visible = false;
+            type_textbox.Visible = false;
+            confirm_worker_button.Visible = false;
+            hide_button.Visible = false;
+        }
+        void SHOW()
+        {
+            ID_textbox.Visible = true;
+            username_textbox.Visible = true;
+            password_textbox.Visible = true;
+            type_textbox.Visible = true;
+            confirm_worker_button.Visible = true;
+            hide_button.Visible = true;
         }
     }
 }
