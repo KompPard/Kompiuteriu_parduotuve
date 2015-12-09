@@ -36,18 +36,18 @@
             this.hide_button = new System.Windows.Forms.Button();
             this.type_textbox = new System.Windows.Forms.TextBox();
             this.ID_textbox = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.product_grid = new System.Windows.Forms.DataGridView();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.category = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.product_description_textbox = new System.Windows.Forms.RichTextBox();
             this.product_name_textbox = new System.Windows.Forms.TextBox();
             this.product_category_textbox = new System.Windows.Forms.TextBox();
             this.product_price_textbox = new System.Windows.Forms.TextBox();
             this.product_confirm = new System.Windows.Forms.Button();
-            this.description = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.product_grid)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -118,19 +118,19 @@
             this.ID_textbox.Size = new System.Drawing.Size(100, 20);
             this.ID_textbox.TabIndex = 7;
             // 
-            // dataGridView1
+            // product_grid
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.product_grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.product_grid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
             this.name,
             this.category,
             this.price,
             this.description});
-            this.dataGridView1.Location = new System.Drawing.Point(1, 12);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(446, 199);
-            this.dataGridView1.TabIndex = 8;
+            this.product_grid.Location = new System.Drawing.Point(1, 12);
+            this.product_grid.Name = "product_grid";
+            this.product_grid.Size = new System.Drawing.Size(446, 199);
+            this.product_grid.TabIndex = 8;
             // 
             // ID
             // 
@@ -151,6 +151,11 @@
             // 
             this.price.HeaderText = "price";
             this.price.Name = "price";
+            // 
+            // description
+            // 
+            this.description.HeaderText = "description";
+            this.description.Name = "description";
             // 
             // product_description_textbox
             // 
@@ -191,11 +196,6 @@
             this.product_confirm.UseVisualStyleBackColor = true;
             this.product_confirm.Click += new System.EventHandler(this.product_confirm_Click);
             // 
-            // description
-            // 
-            this.description.HeaderText = "description";
-            this.description.Name = "description";
-            // 
             // Admin_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -206,7 +206,7 @@
             this.Controls.Add(this.product_category_textbox);
             this.Controls.Add(this.product_name_textbox);
             this.Controls.Add(this.product_description_textbox);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.product_grid);
             this.Controls.Add(this.ID_textbox);
             this.Controls.Add(this.type_textbox);
             this.Controls.Add(this.hide_button);
@@ -217,7 +217,8 @@
             this.Controls.Add(this.button1);
             this.Name = "Admin_form";
             this.Text = "Admin_form";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.Admin_form_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.product_grid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -233,7 +234,7 @@
         private System.Windows.Forms.Button hide_button;
         private System.Windows.Forms.TextBox type_textbox;
         private System.Windows.Forms.TextBox ID_textbox;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView product_grid;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.DataGridViewTextBoxColumn category;

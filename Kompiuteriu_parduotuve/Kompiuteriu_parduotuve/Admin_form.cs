@@ -12,6 +12,7 @@ namespace Kompiuteriu_parduotuve
     public partial class Admin_form : Form
     {
         int veiksmas = 0;
+        DataTable dt = new DataTable();
         public Admin_form()
         {
             InitializeComponent();
@@ -73,6 +74,20 @@ namespace Kompiuteriu_parduotuve
         {
             Product product = new Product();
             product.set(product_name_textbox.Text, product_category_textbox.Text, product_price_textbox.Text, product_description_textbox.Text);
+        }
+
+        private void Admin_form_Load(object sender, EventArgs e)
+        {
+            using (Product product = new Product())
+            {
+                dt = product.Fill_table(dt);
+                foreach (DataRow dr in dt.Rows)
+                {
+
+                    product_grid.Rows.Add(dr.ItemArray);
+
+                }
+            }
         }
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Kompiuteriu_parduotuve
 {
-    class User
+    class User : IDisposable
     {
         Database DB;
         bool logged_in = false;
@@ -71,6 +71,10 @@ namespace Kompiuteriu_parduotuve
                 return false;
             }
             return true;
+        }
+        public void Dispose()
+        {
+            GC.SuppressFinalize(this);
         }
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 using System.Data;
 namespace Kompiuteriu_parduotuve
 {
-    class Product
+    class Product : IDisposable
     {
         string id, name, category, price, description;
         Database DB = new Database();
@@ -45,13 +45,17 @@ namespace Kompiuteriu_parduotuve
         {
 
         }
-        public DataTable refresh()
+        public DataTable Fill_table(DataTable dt)
         {
-            DB.adapter = new System.Data.SqlClient.SqlDataAdapter("SELECT * FROM dbo.Product", DB.conn);
+            DB.adapter = new System.Data.SqlClient.SqlDataAdapter("Select * From dbo.Product", DB.conn);
             DB.dt = new System.Data.DataTable();
-            
-            DB.cmd.ExecuteNonQuery();
+            DB.adapter.Fill(DB.dt);
+
             return DB.dt;
+        }
+        public void Dispose()
+        {
+            GC.SuppressFinalize(this);
         }
     }
 }
