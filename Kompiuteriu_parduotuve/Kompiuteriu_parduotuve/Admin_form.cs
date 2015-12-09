@@ -128,8 +128,17 @@ namespace Kompiuteriu_parduotuve
             {
                 product.set(int.Parse(product_selected_id), product_name_textbox.Text, product_price_textbox.Text, product_description_textbox.Text);
                 refresh_table();
-                
             }
+        }
+
+        private void delete_button_Click(object sender, EventArgs e)
+        {
+            using (Product product = new Product())
+            {
+                product.set(int.Parse(product_selected_id));
+                refresh_table();
+            }
+
         }
     }
 }

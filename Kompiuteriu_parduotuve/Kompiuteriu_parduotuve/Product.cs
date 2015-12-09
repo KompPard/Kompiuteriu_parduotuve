@@ -29,21 +29,11 @@ namespace Kompiuteriu_parduotuve
         }
         public void set(int ID)// trinimui overload
         {
+            this.id = ID.ToString();
             delete();
         }
         private void save()
         {
-            /*  try
-              {
-                  DB.Connect(); //asociacija
-                  DB.cmd = new System.Data.SqlClient.SqlCommand("INSERT INTO dbo.Users(ID,username,password,type) values (" + ID + ",'" + username + "','" + password + "'," + type + ")", DB.conn);
-                  DB.cmd.ExecuteNonQuery();
-              }
-              catch (Exception ex)
-              {
-                  Console.WriteLine(ex);
-                  return false;
-              }*/
             DB.Connect();
             DB.cmd = new System.Data.SqlClient.SqlCommand("INSERT INTO dbo.Product(name,category,price,description) values ('" + name + "'," + category + ",'" + price + "','" + description + "')", DB.conn);
             DB.cmd.ExecuteNonQuery();
@@ -51,7 +41,7 @@ namespace Kompiuteriu_parduotuve
         private void delete()
         {
             DB.Connect();
-            DB.cmd = new System.Data.SqlClient.SqlCommand("INSERT INTO dbo.Product(name,category,price,description) values ('" + name + "'," + category + ",'" + price + "','" + description + "')", DB.conn);
+            DB.cmd = new System.Data.SqlClient.SqlCommand("DELETE FROM dbo.Product WHERE ID="+ id +"", DB.conn);
             DB.cmd.ExecuteNonQuery();
         }
         private void update()

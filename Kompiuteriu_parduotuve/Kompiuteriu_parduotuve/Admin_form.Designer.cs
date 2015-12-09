@@ -219,6 +219,7 @@
             this.delete_button.TabIndex = 16;
             this.delete_button.Text = "Trinti";
             this.delete_button.UseVisualStyleBackColor = true;
+            this.delete_button.Click += new System.EventHandler(this.delete_button_Click);
             // 
             // Admin_form
             // 
