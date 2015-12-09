@@ -140,5 +140,37 @@ namespace Kompiuteriu_parduotuve
             }
 
         }
+
+        private void confirm_category_Click(object sender, EventArgs e)
+        {
+            category_func(true);
+        }
+
+        private void update_category_Click(object sender, EventArgs e)
+        {
+            category_func(false);
+        }
+        private void category_func(bool funkc)
+        {
+            using (Database DB = new Database())
+            {
+                if (funkc == true)
+                    using (Category category = new Category(true))
+                {
+                    
+                    category.set(int.Parse(category_id_textobx.Text), category_name_textbox.Text, DB);
+                    
+                    
+                }
+                else
+                    using (Category category = new Category(false))
+                    {
+
+                        category.set(int.Parse(category_id_textobx.Text), category_name_textbox.Text, DB);
+
+
+                    }
+            }
+        }
     }
 }
