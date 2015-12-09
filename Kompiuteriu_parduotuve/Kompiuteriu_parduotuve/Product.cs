@@ -19,7 +19,14 @@ namespace Kompiuteriu_parduotuve
             this.description = description;
             save();
         }
-        
+        public void set(int id,string name, string price, string description)
+        {
+            this.id = id.ToString();
+            this.name = name;
+            this.price = price;
+            this.description = description;
+            update();
+        }
         public void set(int ID)// trinimui overload
         {
             delete();
@@ -43,6 +50,19 @@ namespace Kompiuteriu_parduotuve
         }
         private void delete()
         {
+            DB.Connect();
+            DB.cmd = new System.Data.SqlClient.SqlCommand("INSERT INTO dbo.Product(name,category,price,description) values ('" + name + "'," + category + ",'" + price + "','" + description + "')", DB.conn);
+            DB.cmd.ExecuteNonQuery();
+        }
+        private void update()
+        {
+            DB.Connect();
+            DB.cmd = new System.Data.SqlClient.SqlCommand("UPDATE dbo.Product SET name = @name, price = @price, description=@description where ID=@ID", DB.conn);
+            DB.cmd.Parameters.AddWithValue("@name", name);
+            DB.cmd.Parameters.AddWithValue("@price", price);
+            DB.cmd.Parameters.AddWithValue("@description", description);
+            DB.cmd.Parameters.AddWithValue("@ID", id);
+            DB.cmd.ExecuteNonQuery();
 
         }
         public DataTable Fill_table(DataTable dt)

@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 using System.Data;
 namespace Kompiuteriu_parduotuve
 {
-    class Database
+    class Database : IDisposable
     {
         public SqlConnection conn = null; 
        public SqlDataAdapter adapter = null;
@@ -25,6 +25,10 @@ namespace Kompiuteriu_parduotuve
                 conn.Open();
 
             }
+        }
+        public void Dispose()
+        {
+            GC.SuppressFinalize(this);
         }
         
     }

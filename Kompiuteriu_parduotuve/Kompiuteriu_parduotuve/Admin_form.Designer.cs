@@ -47,6 +47,8 @@
             this.product_category_textbox = new System.Windows.Forms.TextBox();
             this.product_price_textbox = new System.Windows.Forms.TextBox();
             this.product_confirm = new System.Windows.Forms.Button();
+            this.update_button = new System.Windows.Forms.Button();
+            this.delete_button = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.product_grid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -131,6 +133,9 @@
             this.product_grid.Name = "product_grid";
             this.product_grid.Size = new System.Drawing.Size(446, 199);
             this.product_grid.TabIndex = 8;
+            this.product_grid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.product_grid_CellClick);
+            this.product_grid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.product_grid_CellContentClick);
+            this.product_grid.SelectionChanged += new System.EventHandler(this.product_grid_SelectionChanged);
             // 
             // ID
             // 
@@ -188,19 +193,40 @@
             // 
             // product_confirm
             // 
-            this.product_confirm.Location = new System.Drawing.Point(34, 321);
+            this.product_confirm.Location = new System.Drawing.Point(21, 295);
             this.product_confirm.Name = "product_confirm";
             this.product_confirm.Size = new System.Drawing.Size(75, 23);
             this.product_confirm.TabIndex = 14;
-            this.product_confirm.Text = "Atlikti";
+            this.product_confirm.Text = "Įrašyti";
             this.product_confirm.UseVisualStyleBackColor = true;
             this.product_confirm.Click += new System.EventHandler(this.product_confirm_Click);
+            // 
+            // update_button
+            // 
+            this.update_button.Location = new System.Drawing.Point(21, 321);
+            this.update_button.Name = "update_button";
+            this.update_button.Size = new System.Drawing.Size(75, 23);
+            this.update_button.TabIndex = 15;
+            this.update_button.Text = "Atnaujinti";
+            this.update_button.UseVisualStyleBackColor = true;
+            this.update_button.Click += new System.EventHandler(this.update_button_Click);
+            // 
+            // delete_button
+            // 
+            this.delete_button.Location = new System.Drawing.Point(21, 350);
+            this.delete_button.Name = "delete_button";
+            this.delete_button.Size = new System.Drawing.Size(75, 23);
+            this.delete_button.TabIndex = 16;
+            this.delete_button.Text = "Trinti";
+            this.delete_button.UseVisualStyleBackColor = true;
             // 
             // Admin_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(967, 350);
+            this.ClientSize = new System.Drawing.Size(967, 442);
+            this.Controls.Add(this.delete_button);
+            this.Controls.Add(this.update_button);
             this.Controls.Add(this.product_confirm);
             this.Controls.Add(this.product_price_textbox);
             this.Controls.Add(this.product_category_textbox);
@@ -245,5 +271,7 @@
         private System.Windows.Forms.TextBox product_price_textbox;
         private System.Windows.Forms.Button product_confirm;
         private System.Windows.Forms.DataGridViewTextBoxColumn description;
+        private System.Windows.Forms.Button update_button;
+        private System.Windows.Forms.Button delete_button;
     }
 }

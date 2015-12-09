@@ -11,6 +11,7 @@ namespace Kompiuteriu_parduotuve
 {
     public partial class Admin_form : Form
     {
+        string product_selected_id = "";
         int veiksmas = 0;
         DataTable dt = new DataTable();
         public Admin_form()
@@ -78,6 +79,21 @@ namespace Kompiuteriu_parduotuve
 
         private void Admin_form_Load(object sender, EventArgs e)
         {
+            refresh_table();
+        }
+
+        private void product_grid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+        }
+
+        private void product_grid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+        private void refresh_table()
+        {
+            product_grid.Rows.Clear();
             using (Product product = new Product())
             {
                 dt = product.Fill_table(dt);
@@ -87,6 +103,32 @@ namespace Kompiuteriu_parduotuve
                     product_grid.Rows.Add(dr.ItemArray);
 
                 }
+            }
+
+        }
+        private void product_grid_SelectionChanged(object sender, EventArgs e)
+        {
+
+            foreach (DataGridViewRow row in product_grid.SelectedRows)
+            {
+                product_selected_id = row.Cells[0].Value.ToString();
+                product_name_textbox.Text= row.Cells[1].Value.ToString();
+                product_category_textbox.Text= row.Cells[2].Value.ToString();
+                product_price_textbox.Text = row.Cells[3].Value.ToString();
+                product_description_textbox.Text = row.Cells[4].Value.ToString();
+                Console.WriteLine(product_selected_id);
+            }
+            
+            
+        }
+
+        private void update_button_Click(object sender, EventArgs e)
+        {
+            using (Product product = new Product())
+            {
+                product.set(int.Parse(product_selected_id), product_name_textbox.Text, product_price_textbox.Text, product_description_textbox.Text);
+                refresh_table();
+                
             }
         }
     }
