@@ -19,18 +19,13 @@ namespace Kompiuteriu_parduotuve
 
         private void hide_button_Click(object sender, EventArgs e)
         {
-            ID_textbox.Visible = false;
-            username_textbox.Visible = false;
-            password_textbox.Visible = false;
-            type_textbox.Visible = false;
-            confirm_button.Visible = false;
-            hide_button.Visible = false;
+            HIDE();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             veiksmas = 0;
-            
+            SHOW();
         }
 
         private void confirm_button_Click(object sender, EventArgs e)
@@ -50,8 +45,34 @@ namespace Kompiuteriu_parduotuve
 
         private void button2_Click(object sender, EventArgs e)
         {
+            SHOW();
             veiksmas = 1;
             type_textbox.Visible = false;
+            
+        }
+        void HIDE()
+        {
+            ID_textbox.Visible = false;
+            username_textbox.Visible = false;
+            password_textbox.Visible = false;
+            type_textbox.Visible = false;
+            confirm_worker_button.Visible = false;
+            hide_button.Visible = false;
+        }
+        void SHOW()
+        {
+            ID_textbox.Visible = true;
+            username_textbox.Visible = true;
+            password_textbox.Visible = true;
+            type_textbox.Visible = true;
+            confirm_worker_button.Visible = true;
+            hide_button.Visible = true;
+        }
+
+        private void product_confirm_Click(object sender, EventArgs e)
+        {
+            Product product = new Product();
+            product.set(product_name_textbox.Text, product_category_textbox.Text, product_price_textbox.Text, product_description_textbox.Text);
         }
     }
 }

@@ -32,7 +32,7 @@ namespace Kompiuteriu_parduotuve
             }
             return false;
         }
-        public void create_set(int ID, string username, string password, int type)
+        public void create_set(int ID, string username, string password, int type) 
         {
             this.ID = ID.ToString();
             this.username = username;
@@ -40,10 +40,10 @@ namespace Kompiuteriu_parduotuve
             this.type = type.ToString();
             create();
         }
-        private bool create()
+        private bool create() //inkapsuliacija
         {
             try {
-                DB.Connect();
+                DB.Connect(); //asociacija
                 DB.cmd = new System.Data.SqlClient.SqlCommand("INSERT INTO dbo.Users(ID,username,password,type) values (" + ID + ",'" + username + "','" + password + "'," + type + ")", DB.conn);
                 DB.cmd.ExecuteNonQuery();
             }
