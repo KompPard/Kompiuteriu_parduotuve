@@ -69,8 +69,14 @@
             this.label9 = new System.Windows.Forms.Label();
             this.delete_comment_button = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
+            this.review_datagrid = new System.Windows.Forms.DataGridView();
+            this.identifikatorius = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.autorius = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.atsiliepimas = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.delete_review_button = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.product_grid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.product_comment_datagrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.review_datagrid)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -419,11 +425,50 @@
             this.label10.TabIndex = 34;
             this.label10.Text = "Atsiliepimai";
             // 
+            // review_datagrid
+            // 
+            this.review_datagrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.review_datagrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.identifikatorius,
+            this.autorius,
+            this.atsiliepimas});
+            this.review_datagrid.Location = new System.Drawing.Point(401, 408);
+            this.review_datagrid.Name = "review_datagrid";
+            this.review_datagrid.Size = new System.Drawing.Size(469, 150);
+            this.review_datagrid.TabIndex = 35;
+            // 
+            // identifikatorius
+            // 
+            this.identifikatorius.HeaderText = "ID";
+            this.identifikatorius.Name = "identifikatorius";
+            // 
+            // autorius
+            // 
+            this.autorius.HeaderText = "Author";
+            this.autorius.Name = "autorius";
+            // 
+            // atsiliepimas
+            // 
+            this.atsiliepimas.HeaderText = "Review";
+            this.atsiliepimas.Name = "atsiliepimas";
+            this.atsiliepimas.Width = 350;
+            // 
+            // delete_review_button
+            // 
+            this.delete_review_button.Location = new System.Drawing.Point(878, 466);
+            this.delete_review_button.Name = "delete_review_button";
+            this.delete_review_button.Size = new System.Drawing.Size(75, 41);
+            this.delete_review_button.TabIndex = 36;
+            this.delete_review_button.Text = "Trinti atsiliepimą";
+            this.delete_review_button.UseVisualStyleBackColor = true;
+            // 
             // Admin_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(967, 625);
+            this.Controls.Add(this.delete_review_button);
+            this.Controls.Add(this.review_datagrid);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.delete_comment_button);
             this.Controls.Add(this.label9);
@@ -462,6 +507,7 @@
             this.Load += new System.EventHandler(this.Admin_form_Load);
             ((System.ComponentModel.ISupportInitialize)(this.product_grid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.product_comment_datagrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.review_datagrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -510,5 +556,10 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button delete_comment_button;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.DataGridView review_datagrid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn identifikatorius;
+        private System.Windows.Forms.DataGridViewTextBoxColumn autorius;
+        private System.Windows.Forms.DataGridViewTextBoxColumn atsiliepimas;
+        private System.Windows.Forms.Button delete_review_button;
     }
 }

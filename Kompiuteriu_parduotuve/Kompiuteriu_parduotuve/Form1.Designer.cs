@@ -44,6 +44,13 @@
             this.user_comments = new System.Windows.Forms.RichTextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.user_reviews = new System.Windows.Forms.RichTextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.confirm_review = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.review_message_textbox = new System.Windows.Forms.RichTextBox();
+            this.review_username_textbox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.products_Datagrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -176,11 +183,78 @@
             this.label4.TabIndex = 10;
             this.label4.Text = "Pirkėjų nuomonė apie prekę";
             // 
+            // user_reviews
+            // 
+            this.user_reviews.Location = new System.Drawing.Point(1005, 24);
+            this.user_reviews.Name = "user_reviews";
+            this.user_reviews.Size = new System.Drawing.Size(175, 216);
+            this.user_reviews.TabIndex = 11;
+            this.user_reviews.Text = "";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(1012, 12);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(156, 13);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "Pirkėjų nuomonė apie aplikaciją";
+            // 
+            // confirm_review
+            // 
+            this.confirm_review.Location = new System.Drawing.Point(1055, 432);
+            this.confirm_review.Name = "confirm_review";
+            this.confirm_review.Size = new System.Drawing.Size(176, 23);
+            this.confirm_review.TabIndex = 17;
+            this.confirm_review.Text = "Įvęsti Atsiliepimą";
+            this.confirm_review.UseVisualStyleBackColor = true;
+            this.confirm_review.Click += new System.EventHandler(this.confirm_review_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(964, 305);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(61, 13);
+            this.label6.TabIndex = 16;
+            this.label6.Text = "Atsiliepimas";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(964, 279);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(84, 13);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "Vartotojo vardas";
+            // 
+            // review_message_textbox
+            // 
+            this.review_message_textbox.Location = new System.Drawing.Point(1055, 302);
+            this.review_message_textbox.Name = "review_message_textbox";
+            this.review_message_textbox.Size = new System.Drawing.Size(175, 123);
+            this.review_message_textbox.TabIndex = 14;
+            this.review_message_textbox.Text = "";
+            // 
+            // review_username_textbox
+            // 
+            this.review_username_textbox.Location = new System.Drawing.Point(1055, 276);
+            this.review_username_textbox.Name = "review_username_textbox";
+            this.review_username_textbox.Size = new System.Drawing.Size(176, 20);
+            this.review_username_textbox.TabIndex = 13;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1261, 473);
+            this.Controls.Add(this.confirm_review);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.review_message_textbox);
+            this.Controls.Add(this.review_username_textbox);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.user_reviews);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.user_comments);
@@ -219,6 +293,13 @@
         private System.Windows.Forms.RichTextBox user_comments;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.RichTextBox user_reviews;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button confirm_review;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.RichTextBox review_message_textbox;
+        private System.Windows.Forms.TextBox review_username_textbox;
     }
 }
 

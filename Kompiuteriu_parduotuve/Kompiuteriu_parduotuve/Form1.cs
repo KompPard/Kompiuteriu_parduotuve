@@ -27,7 +27,9 @@ namespace Kompiuteriu_parduotuve
         private void Form1_Load(object sender, EventArgs e)
         {
             refresh_table();
-           
+            refresh_reviews();
+
+
         }
         private void refresh_table()
         {
@@ -44,7 +46,23 @@ namespace Kompiuteriu_parduotuve
             }
 
         }
+        public void refresh_reviews()
+        {
+            using (Commenting comm = new Review())
+            {
+                int i = 0;
+                dt = comm.get(dt, 1);//1 del vaizdo
+                foreach (DataRow dr in dt.Rows)
+                {
 
+                    user_reviews.AppendText(dt.Rows[i].Field<string>("author"));
+                    user_reviews.AppendText(": ");
+                    user_reviews.AppendText(dt.Rows[i].Field<string>("message"));
+                    user_reviews.AppendText("\n");
+                    i++;
+                }
+            }
+        }
         private void products_Datagrid_SelectionChanged(object sender, EventArgs e)
         {
             dt = new DataTable();
@@ -77,6 +95,16 @@ namespace Kompiuteriu_parduotuve
             using(Commenting comm = new Comment())
             {
                 comm.save(username_textbox.Text, comment_textbox.Text, int.Parse(product_selected_id));
+            }
+        }
+
+        private void confirm_review_Click(object sender, EventArgs e)
+        {
+            using (Commenting comm = new Review())
+            {
+                comm.save(review_username_textbox.Text, review_message_textbox.Text, 1);//1 nes reikia kazka stumt, nors nenaudoja
+                user_reviews.Text = "";
+                refresh_reviews();
             }
         }
     }
