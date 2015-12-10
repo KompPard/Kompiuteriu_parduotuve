@@ -97,7 +97,7 @@ namespace Kompiuteriu_parduotuve
             product_grid.Rows.Clear();
             using (Product product = new Product())
             {
-                dt = product.Fill_table(dt);
+                dt = product.Fill_table(dt,true);
                 foreach (DataRow dr in dt.Rows)
                 {
 

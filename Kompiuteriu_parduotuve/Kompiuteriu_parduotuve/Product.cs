@@ -66,14 +66,21 @@ namespace Kompiuteriu_parduotuve
             DB.cmd.ExecuteNonQuery();
 
         }
-        public DataTable Fill_table(DataTable dt)
+        public DataTable Fill_table(DataTable dt,bool admin_ne)
         {
-            DB.adapter = new System.Data.SqlClient.SqlDataAdapter("Select * From dbo.Product", DB.conn);
+            string admin = "SELECT * FROM dbo.Product",
+                   user= "Select pro.ID, pro.name, cat.name, pro.price, pro.description  From dbo.Product pro INNER JOIN dbo.Category cat ON pro.category=cat.id";
+            if (admin_ne==true)
+                DB.adapter = new System.Data.SqlClient.SqlDataAdapter(admin, DB.conn);
+            else 
+                DB.adapter = new System.Data.SqlClient.SqlDataAdapter(user, DB.conn);
+            
             DB.dt = new System.Data.DataTable();
             DB.adapter.Fill(DB.dt);
 
             return DB.dt;
         }
+        
         public void Dispose()
         {
             GC.SuppressFinalize(this);
