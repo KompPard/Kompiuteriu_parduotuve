@@ -78,6 +78,7 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.product_grid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.product_comment_datagrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.review_datagrid)).BeginInit();
@@ -196,7 +197,7 @@
             // 
             // product_description_textbox
             // 
-            this.product_description_textbox.Location = new System.Drawing.Point(160, 233);
+            this.product_description_textbox.Location = new System.Drawing.Point(160, 259);
             this.product_description_textbox.Name = "product_description_textbox";
             this.product_description_textbox.Size = new System.Drawing.Size(193, 198);
             this.product_description_textbox.TabIndex = 9;
@@ -504,11 +505,21 @@
             this.label14.TabIndex = 40;
             this.label14.Text = "Type";
             // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(232, 244);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(69, 13);
+            this.label15.TabIndex = 41;
+            this.label15.Text = "Apibudinimas";
+            // 
             // Admin_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(967, 625);
+            this.Controls.Add(this.label15);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label12);
@@ -611,5 +622,6 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
     }
 }
