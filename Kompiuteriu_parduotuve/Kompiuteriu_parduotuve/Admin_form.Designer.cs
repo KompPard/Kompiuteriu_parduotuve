@@ -74,6 +74,10 @@
             this.autorius = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.atsiliepimas = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.delete_review_button = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.product_grid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.product_comment_datagrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.review_datagrid)).BeginInit();
@@ -436,6 +440,7 @@
             this.review_datagrid.Name = "review_datagrid";
             this.review_datagrid.Size = new System.Drawing.Size(469, 150);
             this.review_datagrid.TabIndex = 35;
+            this.review_datagrid.SelectionChanged += new System.EventHandler(this.review_datagrid_SelectionChanged);
             // 
             // identifikatorius
             // 
@@ -461,12 +466,53 @@
             this.delete_review_button.TabIndex = 36;
             this.delete_review_button.Text = "Trinti atsiliepimą";
             this.delete_review_button.UseVisualStyleBackColor = true;
+            this.delete_review_button.Click += new System.EventHandler(this.delete_review_button_Click);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(793, 60);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(18, 13);
+            this.label11.TabIndex = 37;
+            this.label11.Text = "ID";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(793, 86);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(55, 13);
+            this.label12.TabIndex = 38;
+            this.label12.Text = "Username";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(793, 110);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(53, 13);
+            this.label13.TabIndex = 39;
+            this.label13.Text = "Password";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(793, 136);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(31, 13);
+            this.label14.TabIndex = 40;
+            this.label14.Text = "Type";
             // 
             // Admin_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(967, 625);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.label11);
             this.Controls.Add(this.delete_review_button);
             this.Controls.Add(this.review_datagrid);
             this.Controls.Add(this.label10);
@@ -561,5 +607,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn autorius;
         private System.Windows.Forms.DataGridViewTextBoxColumn atsiliepimas;
         private System.Windows.Forms.Button delete_review_button;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
     }
 }

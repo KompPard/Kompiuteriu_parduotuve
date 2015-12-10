@@ -228,6 +228,24 @@ namespace Kompiuteriu_parduotuve
 
         }
 
+        private void review_datagrid_SelectionChanged(object sender, EventArgs e)
+        {
+            foreach(DataGridViewRow row in review_datagrid.SelectedRows)
+            {
+                review_id =row.Cells[0].Value.ToString();
+                Console.WriteLine(review_id);
+            }
+        }
+
+        private void delete_review_button_Click(object sender, EventArgs e)
+        {
+            using (Commenting comm = new Review())
+            {
+                comm.delete(int.Parse(review_id));
+                refresh_review_table();
+            }
+        }
+
         private void delete_comment_button_Click(object sender, EventArgs e)
         {
             using(Commenting comm=new Comment())

@@ -11,7 +11,12 @@ namespace Kompiuteriu_parduotuve
     {
         public override void delete(int id)
         {
-            throw new NotImplementedException();
+            using (Database DB = new Database())
+            {
+                DB.Connect();
+                DB.cmd = new System.Data.SqlClient.SqlCommand("DELETE FROM dbo.Review WHERE id=" + id + "", DB.conn);
+                DB.cmd.ExecuteNonQuery();
+            }
         }
 
         public override DataTable get(DataTable dt, int product_id)
