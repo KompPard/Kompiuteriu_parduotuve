@@ -47,12 +47,37 @@ namespace Kompiuteriu_parduotuve
 
         private void products_Datagrid_SelectionChanged(object sender, EventArgs e)
         {
+            dt = new DataTable();
+            user_comments.Text = "";
             foreach (DataGridViewRow row in products_Datagrid.SelectedRows)
             {
                 product_selected_id = row.Cells[0].Value.ToString();
                 products_description.Text= row.Cells[4].Value.ToString();
+                using(Commenting comm=new Comment())
+                {
+                    int i = 0;
+                    dt = comm.get(dt, int.Parse(product_selected_id));
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        
+                        // products_Datagrid.Rows.Add(dr.ItemArray);
+                        user_comments.AppendText(dt.Rows[i].Field<string>("author"));
+                        user_comments.AppendText(": ");
+                        user_comments.AppendText(dt.Rows[i].Field<string>("message"));
+                        user_comments.AppendText("\n");
+                       i++;
+                    }
+                }
             }
             Console.Write(product_selected_id);
+        }
+
+        private void confirm_comment_Click(object sender, EventArgs e)
+        {
+            using(Commenting comm = new Comment())
+            {
+                comm.save(username_textbox.Text, comment_textbox.Text, int.Parse(product_selected_id));
+            }
         }
     }
 }

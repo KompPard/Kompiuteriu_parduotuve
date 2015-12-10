@@ -3,14 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Data;
 namespace Kompiuteriu_parduotuve
 {
-   abstract class Commenting
+   abstract class Commenting : IDisposable
     {
         int id;
         string author, message;
-        public abstract void save(string author, string message, int id, int product_id);
+        public abstract void save(string author, string message, int product_id);
         public abstract void delete(int id);
+        public abstract DataTable get(DataTable dt, int product_id);
+        public void Dispose()
+        {
+            GC.SuppressFinalize(this);
+        }
     }
 }
