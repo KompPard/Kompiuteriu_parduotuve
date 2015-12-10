@@ -11,7 +11,7 @@ namespace Kompiuteriu_parduotuve
 {
     public partial class Admin_form : Form
     {
-        string product_selected_id = "";
+        string product_selected_id = "",product_comment_id="";
         int veiksmas = 0;
         DataTable dt = new DataTable();
         public Admin_form()
@@ -107,6 +107,21 @@ namespace Kompiuteriu_parduotuve
             }
 
         }
+        private void refresh_comment_table()
+        {
+            product_comment_datagrid.Rows.Clear();
+            using (Commenting comm = new Comment())
+            {
+                dt = comm.get(dt, int.Parse(product_selected_id));
+                foreach (DataRow dr in dt.Rows)
+                {
+
+                    product_comment_datagrid.Rows.Add(dr.ItemArray);
+
+                }
+            }
+
+        }
         private void product_grid_SelectionChanged(object sender, EventArgs e)
         {
             foreach (DataGridViewRow row in product_grid.SelectedRows)
@@ -117,7 +132,9 @@ namespace Kompiuteriu_parduotuve
                 product_price_textbox.Text = row.Cells[3].Value.ToString();
                 product_description_textbox.Text = row.Cells[4].Value.ToString();
                 Console.WriteLine(product_selected_id);
+                refresh_comment_table();
             }
+            
         }
 
         private void update_button_Click(object sender, EventArgs e)
@@ -182,6 +199,37 @@ namespace Kompiuteriu_parduotuve
             type_textbox.Visible = true;
             confirm_worker_button.Visible = true;
             hide_button.Visible = true;
+        }
+
+        private void to_main_form_Click(object sender, EventArgs e)
+        {
+            Form1 main = new Form1();
+            main.Show();
+            this.Close();
+        }
+
+        private void product_comment_datagrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void delete_comment_button_Click(object sender, EventArgs e)
+        {
+            using(Commenting comm=new Comment())
+            {
+                comm.delete(int.Parse(product_comment_id));
+                refresh_comment_table();
+            }
+        }
+
+        private void product_comment_datagrid_SelectionChanged(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in product_comment_datagrid.SelectedRows)
+            {
+               product_comment_id = product_selected_id = row.Cells[0].Value.ToString();
+                Console.WriteLine(product_comment_id);
+            }
+
         }
     }
 }

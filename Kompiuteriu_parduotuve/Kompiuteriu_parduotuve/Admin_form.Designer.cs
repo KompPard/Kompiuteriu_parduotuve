@@ -37,6 +37,11 @@
             this.type_textbox = new System.Windows.Forms.TextBox();
             this.ID_textbox = new System.Windows.Forms.TextBox();
             this.product_grid = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.category = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.product_description_textbox = new System.Windows.Forms.RichTextBox();
             this.product_name_textbox = new System.Windows.Forms.TextBox();
             this.product_price_textbox = new System.Windows.Forms.TextBox();
@@ -49,11 +54,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.category = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.category_id_textobx = new System.Windows.Forms.TextBox();
             this.category_name_textbox = new System.Windows.Forms.TextBox();
             this.confirm_category = new System.Windows.Forms.Button();
@@ -61,7 +61,16 @@
             this.product_category_comb = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.to_main_form = new System.Windows.Forms.Button();
+            this.product_comment_datagrid = new System.Windows.Forms.DataGridView();
+            this.iden = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.author = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.message = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label9 = new System.Windows.Forms.Label();
+            this.delete_comment_button = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.product_grid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.product_comment_datagrid)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -148,6 +157,32 @@
             this.product_grid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.product_grid_CellClick);
             this.product_grid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.product_grid_CellContentClick);
             this.product_grid.SelectionChanged += new System.EventHandler(this.product_grid_SelectionChanged);
+            // 
+            // ID
+            // 
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            // 
+            // name
+            // 
+            this.name.HeaderText = "name";
+            this.name.Name = "name";
+            // 
+            // category
+            // 
+            this.category.HeaderText = "category";
+            this.category.Name = "category";
+            // 
+            // price
+            // 
+            this.price.HeaderText = "price";
+            this.price.Name = "price";
+            // 
+            // description
+            // 
+            this.description.HeaderText = "description";
+            this.description.Name = "description";
+            this.description.Visible = false;
             // 
             // product_description_textbox
             // 
@@ -255,32 +290,6 @@
             this.label6.TabIndex = 22;
             this.label6.Text = "Kaina";
             // 
-            // ID
-            // 
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            // 
-            // name
-            // 
-            this.name.HeaderText = "name";
-            this.name.Name = "name";
-            // 
-            // category
-            // 
-            this.category.HeaderText = "category";
-            this.category.Name = "category";
-            // 
-            // price
-            // 
-            this.price.HeaderText = "price";
-            this.price.Name = "price";
-            // 
-            // description
-            // 
-            this.description.HeaderText = "description";
-            this.description.Name = "description";
-            this.description.Visible = false;
-            // 
             // category_id_textobx
             // 
             this.category_id_textobx.Location = new System.Drawing.Point(529, 31);
@@ -342,11 +351,84 @@
             this.label8.TabIndex = 29;
             this.label8.Text = "Pav";
             // 
+            // to_main_form
+            // 
+            this.to_main_form.Location = new System.Drawing.Point(877, 590);
+            this.to_main_form.Name = "to_main_form";
+            this.to_main_form.Size = new System.Drawing.Size(75, 23);
+            this.to_main_form.TabIndex = 30;
+            this.to_main_form.Text = "Į pagrindinį";
+            this.to_main_form.UseVisualStyleBackColor = true;
+            this.to_main_form.Click += new System.EventHandler(this.to_main_form_Click);
+            // 
+            // product_comment_datagrid
+            // 
+            this.product_comment_datagrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.product_comment_datagrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.iden,
+            this.author,
+            this.message});
+            this.product_comment_datagrid.Location = new System.Drawing.Point(401, 260);
+            this.product_comment_datagrid.Name = "product_comment_datagrid";
+            this.product_comment_datagrid.Size = new System.Drawing.Size(469, 129);
+            this.product_comment_datagrid.TabIndex = 31;
+            this.product_comment_datagrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.product_comment_datagrid_CellContentClick);
+            this.product_comment_datagrid.SelectionChanged += new System.EventHandler(this.product_comment_datagrid_SelectionChanged);
+            // 
+            // iden
+            // 
+            this.iden.HeaderText = "ID";
+            this.iden.Name = "iden";
+            // 
+            // author
+            // 
+            this.author.HeaderText = "Author";
+            this.author.Name = "author";
+            // 
+            // message
+            // 
+            this.message.HeaderText = "Message";
+            this.message.Name = "message";
+            this.message.Width = 350;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(587, 244);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(60, 13);
+            this.label9.TabIndex = 32;
+            this.label9.Text = "Komentarai";
+            // 
+            // delete_comment_button
+            // 
+            this.delete_comment_button.Location = new System.Drawing.Point(876, 316);
+            this.delete_comment_button.Name = "delete_comment_button";
+            this.delete_comment_button.Size = new System.Drawing.Size(75, 41);
+            this.delete_comment_button.TabIndex = 33;
+            this.delete_comment_button.Text = "Trinti komentarą";
+            this.delete_comment_button.UseVisualStyleBackColor = true;
+            this.delete_comment_button.Click += new System.EventHandler(this.delete_comment_button_Click);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(583, 392);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(58, 13);
+            this.label10.TabIndex = 34;
+            this.label10.Text = "Atsiliepimai";
+            // 
             // Admin_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(967, 442);
+            this.ClientSize = new System.Drawing.Size(967, 625);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.delete_comment_button);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.product_comment_datagrid);
+            this.Controls.Add(this.to_main_form);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.product_category_comb);
@@ -379,6 +461,7 @@
             this.Text = "Admin_form";
             this.Load += new System.EventHandler(this.Admin_form_Load);
             ((System.ComponentModel.ISupportInitialize)(this.product_grid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.product_comment_datagrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -419,5 +502,13 @@
         private System.Windows.Forms.ComboBox product_category_comb;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button to_main_form;
+        private System.Windows.Forms.DataGridView product_comment_datagrid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn iden;
+        private System.Windows.Forms.DataGridViewTextBoxColumn author;
+        private System.Windows.Forms.DataGridViewTextBoxColumn message;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button delete_comment_button;
+        private System.Windows.Forms.Label label10;
     }
 }
