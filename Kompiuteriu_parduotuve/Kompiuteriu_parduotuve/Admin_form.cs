@@ -11,7 +11,7 @@ namespace Kompiuteriu_parduotuve
 {
     public partial class Admin_form : Form
     {
-        string product_selected_id = "",product_comment_id="";
+        string product_selected_id = "",product_comment_id="",review_id="";
         int veiksmas = 0;
         DataTable dt = new DataTable();
         public Admin_form()
@@ -63,6 +63,7 @@ namespace Kompiuteriu_parduotuve
         private void Admin_form_Load(object sender, EventArgs e)
         {
             refresh_table();
+            refresh_review_table();
             using (Database DB = new Database())
             {
 
@@ -117,6 +118,20 @@ namespace Kompiuteriu_parduotuve
                 {
 
                     product_comment_datagrid.Rows.Add(dr.ItemArray);
+
+                }
+            }
+
+        }
+        private void refresh_review_table()
+        {
+            review_datagrid.Rows.Clear();
+            using (Commenting comm = new Review())
+            {
+                dt = comm.get(dt,1);//1 PLACEHOLDER
+                foreach (DataRow dr in dt.Rows)
+                {
+                    review_datagrid.Rows.Add(dr.ItemArray);
 
                 }
             }

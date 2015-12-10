@@ -18,7 +18,7 @@ namespace Kompiuteriu_parduotuve
         {
             using (Database DB = new Database())
             {
-                DB.adapter = new System.Data.SqlClient.SqlDataAdapter("SELECT author, message from dbo.Review", DB.conn);
+                DB.adapter = new System.Data.SqlClient.SqlDataAdapter("SELECT id,author, message from dbo.Review", DB.conn);
                 DB.dt = new System.Data.DataTable();
                 DB.adapter.Fill(DB.dt);
 
