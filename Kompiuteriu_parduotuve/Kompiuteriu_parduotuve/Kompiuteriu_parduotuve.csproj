@@ -72,6 +72,8 @@
       <DependentUpon>Admin_form.cs</DependentUpon>
     </Compile>
     <Compile Include="Category.cs" />
+    <Compile Include="Comment.cs" />
+    <Compile Include="Commenting.cs" />
     <Compile Include="Database.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
