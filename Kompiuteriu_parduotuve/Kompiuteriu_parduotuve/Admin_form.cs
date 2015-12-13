@@ -1,94 +1,75 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace Kompiuteriu_parduotuve
 {
     public partial class Admin_form : Form
     {
-        string product_selected_id = "",product_comment_id="",review_id="";
-        int veiksmas = 0;
+        string product_selected_id = "", product_comment_id="", review_id="";
+        int action = 0;
         DataTable dt = new DataTable();
         public Admin_form()
         {
             InitializeComponent();
         }
-
         private void hide_button_Click(object sender, EventArgs e)
         {
             HIDE();
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
-            veiksmas = 0;
+            action = 0;
             SHOW();
         }
-
         private void confirm_button_Click(object sender, EventArgs e)
         {
-            
             Database DB = new Database();
             User user = new User(DB);
-            if (veiksmas == 0)
+            if (action == 0)
             {
                 user.create_set(int.Parse(ID_textbox.Text), username_textbox.Text, password_textbox.Text, int.Parse(type_textbox.Text));
             }
-            else if (veiksmas == 1)
+            else if (action == 1)
             {
                 user.update(int.Parse(ID_textbox.Text), username_textbox.Text, password_textbox.Text);
             }
         }
-
         private void button2_Click(object sender, EventArgs e)
         {
             SHOW();
-            veiksmas = 1;
+            action = 1;
             type_textbox.Visible = false;
-            
         }
-
-
         private void product_confirm_Click(object sender, EventArgs e)
         {
             Product product = new Product();
             product.set(product_name_textbox.Text, product_category_comb.SelectedValue.ToString(), product_price_textbox.Text, product_description_textbox.Text);
         }
-
         private void Admin_form_Load(object sender, EventArgs e)
         {
             refresh_table();
             refresh_review_table();
+            refresh_contacts_values();
             using (Database DB = new Database())
             {
-
                 using (Category category = new Category(false))
                 {
-
                     DataTable comb_dt;
                     comb_dt = category.display_combobox(DB);
                     foreach (DataRow dr in comb_dt.Rows)
                     {
-
                         product_category_comb.DataSource = comb_dt;
                         product_category_comb.DisplayMember = "name";
                         product_category_comb.ValueMember = "id";
-
                     }
                 }
             }
         }
-
         private void product_grid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             
         }
-
         private void product_grid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -101,12 +82,21 @@ namespace Kompiuteriu_parduotuve
                 dt = product.Fill_table(dt,true);
                 foreach (DataRow dr in dt.Rows)
                 {
-
                     product_grid.Rows.Add(dr.ItemArray);
-
                 }
             }
-
+        }
+        private void refresh_contacts_values()
+        {
+            using (Contacts contacts = new Contacts(new Database()))
+            {
+                dt = contacts.show();
+                company_name_textbox.Text = dt.Rows[0][1].ToString();
+                company_address_textbox.Text = dt.Rows[0][2].ToString();
+                company_phone_textbox.Text = dt.Rows[0][3].ToString();
+                company_email_textbox.Text = dt.Rows[0][4].ToString();
+                company_owner_textbox.Text = dt.Rows[0][5].ToString();
+            }
         }
         private void refresh_comment_table()
         {
@@ -116,12 +106,9 @@ namespace Kompiuteriu_parduotuve
                 dt = comm.get(dt, int.Parse(product_selected_id));
                 foreach (DataRow dr in dt.Rows)
                 {
-
                     product_comment_datagrid.Rows.Add(dr.ItemArray);
-
                 }
             }
-
         }
         private void refresh_review_table()
         {
@@ -132,10 +119,8 @@ namespace Kompiuteriu_parduotuve
                 foreach (DataRow dr in dt.Rows)
                 {
                     review_datagrid.Rows.Add(dr.ItemArray);
-
                 }
             }
-
         }
         private void product_grid_SelectionChanged(object sender, EventArgs e)
         {
@@ -149,9 +134,7 @@ namespace Kompiuteriu_parduotuve
                 Console.WriteLine(product_selected_id);
                 refresh_comment_table();
             }
-            
         }
-
         private void update_button_Click(object sender, EventArgs e)
         {
             using (Product product = new Product())
@@ -160,7 +143,6 @@ namespace Kompiuteriu_parduotuve
                 refresh_table();
             }
         }
-
         private void delete_button_Click(object sender, EventArgs e)
         {
             using (Product product = new Product())
@@ -168,14 +150,11 @@ namespace Kompiuteriu_parduotuve
                 product.set(int.Parse(product_selected_id));
                 refresh_table();
             }
-
         }
-
         private void confirm_category_Click(object sender, EventArgs e)
         {
             category_func(true);
         }
-
         private void update_category_Click(object sender, EventArgs e)
         {
             category_func(false);
@@ -192,7 +171,6 @@ namespace Kompiuteriu_parduotuve
                         category.set(int.Parse(category_id_textobx.Text), category_name_textbox.Text, DB);
             }
         }
-
         private void product_category_comb_SelectedIndexChanged(object sender, EventArgs e)
         {
            Console.WriteLine(product_category_comb.SelectedValue);
@@ -215,19 +193,16 @@ namespace Kompiuteriu_parduotuve
             confirm_worker_button.Visible = true;
             hide_button.Visible = true;
         }
-
         private void to_main_form_Click(object sender, EventArgs e)
         {
             Form1 main = new Form1();
             main.Show();
-            this.Close();
+            Close();
         }
-
         private void product_comment_datagrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
-
         private void review_datagrid_SelectionChanged(object sender, EventArgs e)
         {
             foreach(DataGridViewRow row in review_datagrid.SelectedRows)
@@ -236,7 +211,6 @@ namespace Kompiuteriu_parduotuve
                 Console.WriteLine(review_id);
             }
         }
-
         private void delete_review_button_Click(object sender, EventArgs e)
         {
             using (Commenting comm = new Review())
@@ -244,6 +218,24 @@ namespace Kompiuteriu_parduotuve
                 comm.delete(int.Parse(review_id));
                 refresh_review_table();
             }
+        }
+
+        private void update_contacts_button_Click(object sender, EventArgs e)
+        {
+            using (Contacts contacts = new Contacts(new Database()))
+            {
+                if (contacts.update(company_name_textbox.Text, company_address_textbox.Text, company_phone_textbox.Text, company_email_textbox.Text, company_owner_textbox.Text))
+                {
+                    contact_update_label.ForeColor = System.Drawing.Color.Green;
+                    contact_update_label.Text = "Atnaujinta";
+                }
+                else
+                {
+                    contact_update_label.ForeColor = System.Drawing.Color.Red;
+                    contact_update_label.Text = "Nepavyko atnaujinti duomenų";
+                }
+            }
+            refresh_contacts_values();
         }
 
         private void delete_comment_button_Click(object sender, EventArgs e)
@@ -254,7 +246,6 @@ namespace Kompiuteriu_parduotuve
                 refresh_comment_table();
             }
         }
-
         private void product_comment_datagrid_SelectionChanged(object sender, EventArgs e)
         {
             foreach (DataGridViewRow row in product_comment_datagrid.SelectedRows)
@@ -262,7 +253,6 @@ namespace Kompiuteriu_parduotuve
                product_comment_id = product_selected_id = row.Cells[0].Value.ToString();
                 Console.WriteLine(product_comment_id);
             }
-
         }
     }
 }

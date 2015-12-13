@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data;
 
 namespace Kompiuteriu_parduotuve
 {
@@ -35,7 +30,7 @@ namespace Kompiuteriu_parduotuve
         {
             using (Database DB = new Database()) {
                 DB.adapter = new System.Data.SqlClient.SqlDataAdapter("SELECT id,author, message from dbo.Comment where product_id="+product_id+"", DB.conn);
-                DB.dt = new System.Data.DataTable();
+                DB.dt = new DataTable();
                 DB.adapter.Fill(DB.dt);
 
                 return DB.dt;

@@ -79,6 +79,19 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
+            this.company_name_textbox = new System.Windows.Forms.TextBox();
+            this.company_address_textbox = new System.Windows.Forms.TextBox();
+            this.company_phone_textbox = new System.Windows.Forms.TextBox();
+            this.company_email_textbox = new System.Windows.Forms.TextBox();
+            this.company_owner_textbox = new System.Windows.Forms.TextBox();
+            this.update_contacts_button = new System.Windows.Forms.Button();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.contact_update_label = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.product_grid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.product_comment_datagrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.review_datagrid)).BeginInit();
@@ -514,11 +527,131 @@
             this.label15.TabIndex = 41;
             this.label15.Text = "Apibudinimas";
             // 
+            // company_name_textbox
+            // 
+            this.company_name_textbox.Location = new System.Drawing.Point(72, 477);
+            this.company_name_textbox.Name = "company_name_textbox";
+            this.company_name_textbox.Size = new System.Drawing.Size(100, 20);
+            this.company_name_textbox.TabIndex = 42;
+            // 
+            // company_address_textbox
+            // 
+            this.company_address_textbox.Location = new System.Drawing.Point(72, 503);
+            this.company_address_textbox.Name = "company_address_textbox";
+            this.company_address_textbox.Size = new System.Drawing.Size(100, 20);
+            this.company_address_textbox.TabIndex = 43;
+            // 
+            // company_phone_textbox
+            // 
+            this.company_phone_textbox.Location = new System.Drawing.Point(72, 529);
+            this.company_phone_textbox.Name = "company_phone_textbox";
+            this.company_phone_textbox.Size = new System.Drawing.Size(100, 20);
+            this.company_phone_textbox.TabIndex = 44;
+            // 
+            // company_email_textbox
+            // 
+            this.company_email_textbox.Location = new System.Drawing.Point(72, 555);
+            this.company_email_textbox.Name = "company_email_textbox";
+            this.company_email_textbox.Size = new System.Drawing.Size(100, 20);
+            this.company_email_textbox.TabIndex = 45;
+            // 
+            // company_owner_textbox
+            // 
+            this.company_owner_textbox.Location = new System.Drawing.Point(72, 581);
+            this.company_owner_textbox.Name = "company_owner_textbox";
+            this.company_owner_textbox.Size = new System.Drawing.Size(100, 20);
+            this.company_owner_textbox.TabIndex = 46;
+            // 
+            // update_contacts_button
+            // 
+            this.update_contacts_button.Location = new System.Drawing.Point(190, 515);
+            this.update_contacts_button.Name = "update_contacts_button";
+            this.update_contacts_button.Size = new System.Drawing.Size(75, 46);
+            this.update_contacts_button.TabIndex = 47;
+            this.update_contacts_button.Text = "Atnaujinti kontaktus";
+            this.update_contacts_button.UseVisualStyleBackColor = true;
+            this.update_contacts_button.Click += new System.EventHandler(this.update_contacts_button_Click);
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(-1, 480);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(67, 13);
+            this.label16.TabIndex = 48;
+            this.label16.Text = "Pavadinimas";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(-1, 506);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(45, 13);
+            this.label17.TabIndex = 49;
+            this.label17.Text = "Adresas";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(-1, 532);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(42, 13);
+            this.label18.TabIndex = 50;
+            this.label18.Text = "Tel. Nr.";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(-1, 558);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(53, 13);
+            this.label19.TabIndex = 51;
+            this.label19.Text = "El. paštas";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(-1, 584);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(49, 13);
+            this.label20.TabIndex = 52;
+            this.label20.Text = "Vadovas";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(-1, 455);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(52, 13);
+            this.label21.TabIndex = 53;
+            this.label21.Text = "Kontaktai";
+            // 
+            // contact_update_label
+            // 
+            this.contact_update_label.AutoSize = true;
+            this.contact_update_label.Location = new System.Drawing.Point(3, 603);
+            this.contact_update_label.Name = "contact_update_label";
+            this.contact_update_label.Size = new System.Drawing.Size(0, 13);
+            this.contact_update_label.TabIndex = 54;
+            // 
             // Admin_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(967, 625);
+            this.Controls.Add(this.contact_update_label);
+            this.Controls.Add(this.label21);
+            this.Controls.Add(this.label20);
+            this.Controls.Add(this.label19);
+            this.Controls.Add(this.label18);
+            this.Controls.Add(this.label17);
+            this.Controls.Add(this.label16);
+            this.Controls.Add(this.update_contacts_button);
+            this.Controls.Add(this.company_owner_textbox);
+            this.Controls.Add(this.company_email_textbox);
+            this.Controls.Add(this.company_phone_textbox);
+            this.Controls.Add(this.company_address_textbox);
+            this.Controls.Add(this.company_name_textbox);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label13);
@@ -623,5 +756,18 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox company_name_textbox;
+        private System.Windows.Forms.TextBox company_address_textbox;
+        private System.Windows.Forms.TextBox company_phone_textbox;
+        private System.Windows.Forms.TextBox company_email_textbox;
+        private System.Windows.Forms.TextBox company_owner_textbox;
+        private System.Windows.Forms.Button update_contacts_button;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label contact_update_label;
     }
 }

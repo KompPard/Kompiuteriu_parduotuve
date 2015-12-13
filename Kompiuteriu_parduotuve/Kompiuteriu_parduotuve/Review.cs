@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data;
 
 namespace Kompiuteriu_parduotuve
 {
@@ -18,19 +13,16 @@ namespace Kompiuteriu_parduotuve
                 DB.cmd.ExecuteNonQuery();
             }
         }
-
         public override DataTable get(DataTable dt, int product_id)
         {
             using (Database DB = new Database())
             {
                 DB.adapter = new System.Data.SqlClient.SqlDataAdapter("SELECT id,author, message from dbo.Review", DB.conn);
-                DB.dt = new System.Data.DataTable();
+                DB.dt = new DataTable();
                 DB.adapter.Fill(DB.dt);
-
                 return DB.dt;
             }
         }
-
         public override void save(string author, string message, int product_id)
         {
             using (Database DB = new Database())

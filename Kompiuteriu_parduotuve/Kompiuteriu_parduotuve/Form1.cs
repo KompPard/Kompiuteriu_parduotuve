@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace Kompiuteriu_parduotuve
@@ -17,19 +12,26 @@ namespace Kompiuteriu_parduotuve
         {
             InitializeComponent();
         }
-
         private void Login_button_Click(object sender, EventArgs e)
         {
             new Login_Form().Show();
-            this.Hide();
+            Hide();
         }
-
         private void Form1_Load(object sender, EventArgs e)
         {
             refresh_table();
             refresh_reviews();
-
-
+            show_contacts();
+        }
+        private void show_contacts()
+        {
+            using (Contacts contacts = new Contacts(new Database()))
+            {
+                dt = contacts.show();
+                contacts_box.Text = dt.Rows[0][1].ToString() + "\n" 
+                + dt.Rows[0][2].ToString() + "\n" + dt.Rows[0][3].ToString() + "\n" 
+                + dt.Rows[0][4].ToString() + "\n" + dt.Rows[0][5].ToString();
+            }
         }
         private void refresh_table()
         {
@@ -39,9 +41,7 @@ namespace Kompiuteriu_parduotuve
                 dt = product.Fill_table(dt,false);
                 foreach (DataRow dr in dt.Rows)
                 {
-
                     products_Datagrid.Rows.Add(dr.ItemArray);
-
                 }
             }
 
@@ -54,7 +54,6 @@ namespace Kompiuteriu_parduotuve
                 dt = comm.get(dt, 1);//1 del vaizdo
                 foreach (DataRow dr in dt.Rows)
                 {
-
                     user_reviews.AppendText(dt.Rows[i].Field<string>("author"));
                     user_reviews.AppendText(": ");
                     user_reviews.AppendText(dt.Rows[i].Field<string>("message"));
@@ -70,14 +69,13 @@ namespace Kompiuteriu_parduotuve
             foreach (DataGridViewRow row in products_Datagrid.SelectedRows)
             {
                 product_selected_id = row.Cells[0].Value.ToString();
-                products_description.Text= row.Cells[4].Value.ToString();
+                products_description.Text = row.Cells[4].Value.ToString();
                 using(Commenting comm=new Comment())
                 {
                     int i = 0;
                     dt = comm.get(dt, int.Parse(product_selected_id));
                     foreach (DataRow dr in dt.Rows)
                     {
-                        
                         // products_Datagrid.Rows.Add(dr.ItemArray);
                         user_comments.AppendText(dt.Rows[i].Field<string>("author"));
                         user_comments.AppendText(": ");
@@ -89,7 +87,6 @@ namespace Kompiuteriu_parduotuve
             }
             Console.Write(product_selected_id);
         }
-
         private void confirm_comment_Click(object sender, EventArgs e)
         {
             using(Commenting comm = new Comment())
@@ -97,7 +94,6 @@ namespace Kompiuteriu_parduotuve
                 comm.save(username_textbox.Text, comment_textbox.Text, int.Parse(product_selected_id));
             }
         }
-
         private void confirm_review_Click(object sender, EventArgs e)
         {
             using (Commenting comm = new Review())

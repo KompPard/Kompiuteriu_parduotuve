@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Data;
+
 namespace Kompiuteriu_parduotuve
 {
     class Product : IDisposable
@@ -12,7 +11,6 @@ namespace Kompiuteriu_parduotuve
         List<string> ID_list = new List<string>();
         public void set(string name, string category, string price, string description)
         {
-            
             this.name = name;
             this.category = category;
             this.price = price;
@@ -29,7 +27,7 @@ namespace Kompiuteriu_parduotuve
         }
         public void set(int ID)// trinimui overload
         {
-            this.id = ID.ToString();
+            id = ID.ToString();
             delete();
         }
         private void save()
@@ -64,23 +62,19 @@ namespace Kompiuteriu_parduotuve
             DB.cmd.Parameters.AddWithValue("@description", description);
             DB.cmd.Parameters.AddWithValue("@ID", id);
             DB.cmd.ExecuteNonQuery();
-
         }
         public DataTable Fill_table(DataTable dt,bool admin_ne)
         {
             string admin = "SELECT * FROM dbo.Product",
-                   user= "Select pro.ID, pro.name, cat.name, pro.price, pro.description  From dbo.Product pro INNER JOIN dbo.Category cat ON pro.category=cat.id";
-            if (admin_ne==true)
+                   user = "Select pro.ID, pro.name, cat.name, pro.price, pro.description  From dbo.Product pro INNER JOIN dbo.Category cat ON pro.category=cat.id";
+            if (admin_ne == true)
                 DB.adapter = new System.Data.SqlClient.SqlDataAdapter(admin, DB.conn);
             else 
                 DB.adapter = new System.Data.SqlClient.SqlDataAdapter(user, DB.conn);
-            
-            DB.dt = new System.Data.DataTable();
+            DB.dt = new DataTable();
             DB.adapter.Fill(DB.dt);
-
             return DB.dt;
         }
-        
         public void Dispose()
         {
             GC.SuppressFinalize(this);

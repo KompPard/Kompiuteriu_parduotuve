@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Data;
 
 namespace Kompiuteriu_parduotuve
 {
@@ -10,7 +8,7 @@ namespace Kompiuteriu_parduotuve
         Database DB;
         bool logged_in = false;
         string ID, username, password, type;
-       public User(Database DB)
+        public User(Database DB)
         {
            this.DB = DB; //Agregacija    
         }
@@ -18,9 +16,8 @@ namespace Kompiuteriu_parduotuve
         {
             DB = new Database();
             DB.adapter = new System.Data.SqlClient.SqlDataAdapter("Select ID,username, password,type From dbo.Users where username='" + name + "' and password='" + pass + "'", DB.conn);
-            DB.dt = new System.Data.DataTable();
+            DB.dt = new DataTable();
             DB.adapter.Fill(DB.dt);
-
             if (DB.dt.Rows.Count == 1)
             {
                 ID = DB.dt.Rows[0][0].ToString();
