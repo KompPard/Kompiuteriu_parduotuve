@@ -78,6 +78,8 @@
             // 
             // products_Datagrid
             // 
+            this.products_Datagrid.AllowUserToAddRows = false;
+            this.products_Datagrid.AllowUserToDeleteRows = false;
             this.products_Datagrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.products_Datagrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id,
@@ -285,6 +287,7 @@
             // 
             // cart_Datagrid
             // 
+            this.cart_Datagrid.AllowUserToAddRows = false;
             this.cart_Datagrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.cart_Datagrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.cart_product_name,
@@ -294,6 +297,7 @@
             this.cart_item_price});
             this.cart_Datagrid.Location = new System.Drawing.Point(444, 305);
             this.cart_Datagrid.Name = "cart_Datagrid";
+            this.cart_Datagrid.ReadOnly = true;
             this.cart_Datagrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.cart_Datagrid.Size = new System.Drawing.Size(345, 150);
             this.cart_Datagrid.TabIndex = 20;

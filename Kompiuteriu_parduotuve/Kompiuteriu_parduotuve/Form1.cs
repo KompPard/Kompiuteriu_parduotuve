@@ -6,6 +6,7 @@ namespace Kompiuteriu_parduotuve
 {
     public partial class Form1 : Form
     {
+        string cart_id;
         string product_selected_id = "";
         DataTable dt = null;
         public Form1()
@@ -19,10 +20,10 @@ namespace Kompiuteriu_parduotuve
         }
         private void Form1_Load(object sender, EventArgs e)
         {
+            cart_id = Guid.NewGuid().ToString();
             refresh_table();
             refresh_reviews();
             show_contacts();
-            clear_cart();
         }
         private void show_contacts()
         {
@@ -38,8 +39,8 @@ namespace Kompiuteriu_parduotuve
         {
             using (Cart cart = new Cart())
             {
-                cart.clear_cart();
-                cart.view_cart();
+                cart.clear_cart(cart_id);
+                cart.view_cart(cart_id);
             }
         }
         private void refresh_table()
@@ -59,7 +60,7 @@ namespace Kompiuteriu_parduotuve
             cart_Datagrid.Rows.Clear();
             using (Cart cart = new Cart())
             {
-                dt = cart.view_cart();
+                dt = cart.view_cart(cart_id);
                 foreach (DataRow dr in dt.Rows)
                 {
                     cart_Datagrid.Rows.Add(dr.ItemArray);
@@ -101,7 +102,7 @@ namespace Kompiuteriu_parduotuve
                         user_comments.AppendText(": ");
                         user_comments.AppendText(dt.Rows[i].Field<string>("message"));
                         user_comments.AppendText("\n");
-                       i++;
+                        i++;
                     }
                 }
             }
@@ -127,7 +128,7 @@ namespace Kompiuteriu_parduotuve
         {
             using (Cart cart = new Cart())
             {
-                if(cart.add(Convert.ToInt16(products_Datagrid.SelectedRows[0].Cells[0].Value), 1) == true) //1 default, jei nori useris, tegu pasikeicia cart table
+                if(cart.add(Convert.ToInt16(products_Datagrid.SelectedRows[0].Cells[0].Value), 1, cart_id) == true) //1 default
                 {
                     add_to_cart_label.ForeColor = System.Drawing.Color.Green;
                     add_to_cart_label.Text = "Pridėta";
@@ -144,7 +145,7 @@ namespace Kompiuteriu_parduotuve
         {
             using (Cart cart = new Cart())
             {
-                cart.refill_cart_table(cart_Datagrid);
+                cart.refill_cart_table(cart_Datagrid, cart_id);
             }
         }
     }
