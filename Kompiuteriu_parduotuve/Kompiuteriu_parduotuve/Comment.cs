@@ -3,10 +3,7 @@
 namespace Kompiuteriu_parduotuve
 {
     class Comment : Commenting
-    {
-        int id;
-        string author, message;
-        
+    {       
         public override void delete(int id)
         {
             using (Database DB = new Database())
@@ -16,7 +13,6 @@ namespace Kompiuteriu_parduotuve
                 DB.cmd.ExecuteNonQuery();
             }
         }
-
         public override void save(string author, string message, int product_id)
         {
             using (Database DB = new Database())

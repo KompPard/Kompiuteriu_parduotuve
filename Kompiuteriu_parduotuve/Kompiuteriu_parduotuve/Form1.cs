@@ -22,6 +22,7 @@ namespace Kompiuteriu_parduotuve
             refresh_table();
             refresh_reviews();
             show_contacts();
+            clear_cart();
         }
         private void show_contacts()
         {
@@ -31,6 +32,14 @@ namespace Kompiuteriu_parduotuve
                 contacts_box.Text = dt.Rows[0][1].ToString() + "\n" 
                 + dt.Rows[0][2].ToString() + "\n" + dt.Rows[0][3].ToString() + "\n" 
                 + dt.Rows[0][4].ToString() + "\n" + dt.Rows[0][5].ToString();
+            }
+        }
+        private void clear_cart()
+        {
+            using (Cart cart = new Cart())
+            {
+                cart.clear_cart();
+                cart.view_cart();
             }
         }
         private void refresh_table()
@@ -44,7 +53,18 @@ namespace Kompiuteriu_parduotuve
                     products_Datagrid.Rows.Add(dr.ItemArray);
                 }
             }
-
+        }
+        private void refresh_cart_table()
+        {
+            cart_Datagrid.Rows.Clear();
+            using (Cart cart = new Cart())
+            {
+                dt = cart.view_cart();
+                foreach (DataRow dr in dt.Rows)
+                {
+                    cart_Datagrid.Rows.Add(dr.ItemArray);
+                }
+            }
         }
         public void refresh_reviews()
         {
@@ -70,7 +90,7 @@ namespace Kompiuteriu_parduotuve
             {
                 product_selected_id = row.Cells[0].Value.ToString();
                 products_description.Text = row.Cells[4].Value.ToString();
-                using(Commenting comm=new Comment())
+                using(Commenting comm = new Comment())
                 {
                     int i = 0;
                     dt = comm.get(dt, int.Parse(product_selected_id));
@@ -101,6 +121,30 @@ namespace Kompiuteriu_parduotuve
                 comm.save(review_username_textbox.Text, review_message_textbox.Text, 1);//1 nes reikia kazka stumt, nors nenaudoja
                 user_reviews.Text = "";
                 refresh_reviews();
+            }
+        }
+        private void add_to_cart_button_Click(object sender, EventArgs e)
+        {
+            using (Cart cart = new Cart())
+            {
+                if(cart.add(Convert.ToInt16(products_Datagrid.SelectedRows[0].Cells[0].Value), 1) == true) //1 default, jei nori useris, tegu pasikeicia cart table
+                {
+                    add_to_cart_label.ForeColor = System.Drawing.Color.Green;
+                    add_to_cart_label.Text = "Pridėta";
+                }
+                else
+                {
+                    add_to_cart_label.ForeColor = System.Drawing.Color.Red;
+                    add_to_cart_label.Text = "Klaida";
+                }
+            }
+            refresh_cart_table();
+        }
+        private void cart_Datagrid_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
+        {
+            using (Cart cart = new Cart())
+            {
+                cart.refill_cart_table(cart_Datagrid);
             }
         }
     }

@@ -6,7 +6,6 @@ namespace Kompiuteriu_parduotuve
     class User : IDisposable
     {
         Database DB;
-        bool logged_in = false;
         string ID, username, password, type;
         public User(Database DB)
         {
@@ -24,7 +23,6 @@ namespace Kompiuteriu_parduotuve
                 username= DB.dt.Rows[0][1].ToString();
                 password= DB.dt.Rows[0][2].ToString();
                 type= DB.dt.Rows[0][3].ToString();
-                logged_in = true;
                 return true;
             }
             return false;
@@ -65,6 +63,7 @@ namespace Kompiuteriu_parduotuve
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 return false;
             }
             return true;

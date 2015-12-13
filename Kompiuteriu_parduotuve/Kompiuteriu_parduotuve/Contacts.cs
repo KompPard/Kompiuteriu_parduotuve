@@ -21,7 +21,7 @@ namespace Kompiuteriu_parduotuve
             }
             catch (Exception ex)
             {
-                
+                Console.WriteLine(ex.Message);
             }
             return DB.dt;
         }
@@ -40,6 +40,7 @@ namespace Kompiuteriu_parduotuve
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 return false;
             }
             return true;
