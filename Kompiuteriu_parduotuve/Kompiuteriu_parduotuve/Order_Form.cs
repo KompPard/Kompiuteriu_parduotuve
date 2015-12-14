@@ -28,7 +28,7 @@ namespace Kompiuteriu_parduotuve
         {
             using (Order order = new Order())
             {
-                if (order.order(card_number_textbox.Text, Convert.ToInt16(exp_year_textbox.Text), Convert.ToInt16(exp_month_textbox.Text), Convert.ToInt16(cvc_textbox.Text), dt.Rows[0][2].ToString()))
+                if (order.order(card_number_textbox.Text, Convert.ToInt16(exp_year_textbox.Text), Convert.ToInt16(exp_month_textbox.Text), Convert.ToInt16(cvc_textbox.Text), order_cart_Datagrid.Rows[0].Cells[2].Value.ToString()))
                 {
                     MessageBox.Show("Užsakymas pateiktas");
                     Main_Form main = new Main_Form();

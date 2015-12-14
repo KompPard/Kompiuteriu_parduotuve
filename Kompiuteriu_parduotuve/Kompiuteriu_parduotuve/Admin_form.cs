@@ -51,6 +51,9 @@ namespace Kompiuteriu_parduotuve
             refresh_table();
             refresh_review_table();
             refresh_contacts_values();
+            fill_orders();
+            string[] status = { "Laukia", "Vykdomas", "Įvykdytas" };
+            order_status_box.Items.AddRange(status);
             using (Database DB = new Database())
             {
                 using (Category category = new Category(false))
@@ -127,8 +130,8 @@ namespace Kompiuteriu_parduotuve
             foreach (DataGridViewRow row in product_grid.SelectedRows)
             {
                 product_selected_id = row.Cells[0].Value.ToString();
-                product_category_comb.SelectedValue= row.Cells[2].Value.ToString();
-                product_name_textbox.Text= row.Cells[1].Value.ToString();
+                product_category_comb.SelectedValue = row.Cells[2].Value.ToString();
+                product_name_textbox.Text = row.Cells[1].Value.ToString();
                 product_price_textbox.Text = row.Cells[3].Value.ToString();
                 product_description_textbox.Text = row.Cells[4].Value.ToString();
                 Console.WriteLine(product_selected_id);
@@ -159,16 +162,24 @@ namespace Kompiuteriu_parduotuve
         {
             category_func(false);
         }
-        private void category_func(bool funkc)
+        private void category_func(bool action)
         {
             using (Database DB = new Database())
             {
-                if (funkc == true)
+                if (action == true)
+                {
                     using (Category category = new Category(true))
+                    {
                         category.set(0, category_name_textbox.Text, DB);
+                    }
+                }
                 else
+                {
                     using (Category category = new Category(false))
+                    {
                         category.set(int.Parse(category_id_textobx.Text), category_name_textbox.Text, DB);
+                    }
+                }   
             }
         }
         private void product_category_comb_SelectedIndexChanged(object sender, EventArgs e)
@@ -237,24 +248,30 @@ namespace Kompiuteriu_parduotuve
         }
         private void admin_orders_Datagrid_SelectionChanged(object sender, EventArgs e)
         {
-            if (!admin_orders_Datagrid.SelectedRows.Contains(admin_orders_Datagrid.Rows[-1]))
+            order_status_box.SelectedIndex = Convert.ToInt16(admin_orders_Datagrid.SelectedRows[0].Cells[6].Value);
+            admin_cart_Datagrid.Rows.Clear();
+            using (Cart cart = new Cart())
             {
-                admin_cart_Datagrid.Rows.Clear();
-                using (Cart cart = new Cart())
+                dt = cart.view_cart(admin_orders_Datagrid.SelectedRows[0].Cells[7].Value.ToString());
+                foreach (DataRow dr in dt.Rows)
                 {
-                    dt = cart.view_cart(admin_orders_Datagrid.SelectedRows[0].Cells[7].Value.ToString());
-                    foreach (DataRow dr in dt.Rows)
-                    {
-                        admin_cart_Datagrid.Rows.Add(dr.ItemArray);
-                    }
+                    admin_cart_Datagrid.Rows.Add(dr.ItemArray);
                 }
+            }
+        }
+        private void order_status_box_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            admin_orders_Datagrid.CurrentRow.Cells[6].Value = order_status_box.SelectedIndex;
+            using (Order order = new Order())
+            {
+                order.status(order_status_box.SelectedIndex, admin_orders_Datagrid.CurrentRow.Cells[7].Value.ToString());
             }
         }
         private void product_comment_datagrid_SelectionChanged(object sender, EventArgs e)
         {
             foreach (DataGridViewRow row in product_comment_datagrid.SelectedRows)
             {
-               product_comment_id = product_selected_id = row.Cells[0].Value.ToString();
+                product_comment_id = product_selected_id = row.Cells[0].Value.ToString();
                 Console.WriteLine(product_comment_id);
             }
         }

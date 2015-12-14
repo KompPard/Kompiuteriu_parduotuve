@@ -53,27 +53,12 @@ namespace Kompiuteriu_parduotuve
             }
             return DB.dt;
         }
-        //public DataTable show_order_cart(string cart_id)
-        //{
-        //    try
-        //    {
-        //        DB.Connect();
-        //        DB.adapter = new SqlDataAdapter("SELECT * FROM dbo.Cart WHERE guid='" + cart_id + "'", DB.conn);
-        //        DB.dt = new DataTable();
-        //        DB.adapter.Fill(DB.dt);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message);
-        //    }
-        //    return DB.dt;
-        //}
         public bool status(int value, string cart_id)
         {
             try
             {
                 DB.Connect();
-                DB.cmd = new SqlCommand("UPDATE dbo.Orders SET status=" + value + " WHERE cart_id='" + cart_id + "'", DB.conn);
+                DB.cmd = new SqlCommand("UPDATE dbo.Orders SET order_state=" + value + " WHERE cart_id='" + cart_id + "'", DB.conn);
                 DB.cmd.ExecuteNonQuery();
             }
             catch (Exception ex)
