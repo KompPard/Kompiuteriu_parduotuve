@@ -24,6 +24,7 @@ namespace Kompiuteriu_parduotuve
             refresh_table();
             refresh_reviews();
             show_contacts();
+            fill_category_dropdown();
         }
         private void show_contacts()
         {
@@ -157,6 +158,47 @@ namespace Kompiuteriu_parduotuve
         {
             clear_cart();
             refresh_cart_table();
+        }
+        private void search_button_Click(object sender, EventArgs e)
+        {
+            using (Search search = new Search())
+            {
+                if (search_name_box.Text == "" && (int)search_category_box.SelectedValue == -1)
+                    dt = search.search();
+                else if (search_name_box.Text != "" && (int)search_category_box.SelectedValue == -1)
+                    dt = search.search(search_name_box.Text);
+                else if (search_name_box.Text == "" && (int)search_category_box.SelectedValue != -1)
+                    dt = search.search((int)search_category_box.SelectedValue);
+                else
+                    dt = search.search(search_name_box.Text, (int)search_category_box.SelectedValue);
+                refill_search_table(dt);
+            }
+        }
+        private void fill_category_dropdown()
+        {
+            using (Database DB = new Database())
+            {
+                using (Category category = new Category(false))
+                {
+                    DataTable comb_dt;
+                    comb_dt = category.display_combobox(DB);
+                    comb_dt.Rows.Add(-1, "Visos kategorijos");
+                    foreach (DataRow dr in comb_dt.Rows)
+                    {
+                        search_category_box.DataSource = comb_dt;
+                        search_category_box.DisplayMember = "name";
+                        search_category_box.ValueMember = "id";
+                    }
+                }
+            }
+        }
+        private void refill_search_table(DataTable results)
+        {
+            search_results_Datagrid.Rows.Clear();
+            foreach (DataRow dr in results.Rows)
+            {
+                search_results_Datagrid.Rows.Add(dr.ItemArray);
+            }
         }
     }
 }

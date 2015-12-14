@@ -27,7 +27,6 @@ namespace Kompiuteriu_parduotuve
             DB.cmd = new System.Data.SqlClient.SqlCommand("INSERT INTO dbo.Category(name) values ('" + name + "')", DB.conn);
             DB.cmd.ExecuteNonQuery();
         }
-       
         private void update(Database DB)
         {
             DB.Connect();

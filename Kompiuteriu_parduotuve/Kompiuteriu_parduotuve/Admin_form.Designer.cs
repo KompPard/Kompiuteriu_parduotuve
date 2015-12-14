@@ -376,6 +376,7 @@
             // 
             // product_category_comb
             // 
+            this.product_category_comb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.product_category_comb.FormattingEnabled = true;
             this.product_category_comb.Location = new System.Drawing.Point(85, 58);
             this.product_category_comb.Name = "product_category_comb";
