@@ -37,11 +37,6 @@
             this.type_textbox = new System.Windows.Forms.TextBox();
             this.ID_textbox = new System.Windows.Forms.TextBox();
             this.product_grid = new System.Windows.Forms.DataGridView();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.category = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.product_description_textbox = new System.Windows.Forms.RichTextBox();
             this.product_name_textbox = new System.Windows.Forms.TextBox();
             this.product_price_textbox = new System.Windows.Forms.TextBox();
@@ -92,6 +87,11 @@
             this.label20 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.contact_update_label = new System.Windows.Forms.Label();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.category = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.product_grid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.product_comment_datagrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.review_datagrid)).BeginInit();
@@ -176,37 +176,13 @@
             this.description});
             this.product_grid.Location = new System.Drawing.Point(-1, 28);
             this.product_grid.Name = "product_grid";
+            this.product_grid.ReadOnly = true;
+            this.product_grid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.product_grid.Size = new System.Drawing.Size(446, 199);
             this.product_grid.TabIndex = 8;
             this.product_grid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.product_grid_CellClick);
             this.product_grid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.product_grid_CellContentClick);
             this.product_grid.SelectionChanged += new System.EventHandler(this.product_grid_SelectionChanged);
-            // 
-            // ID
-            // 
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            // 
-            // name
-            // 
-            this.name.HeaderText = "name";
-            this.name.Name = "name";
-            // 
-            // category
-            // 
-            this.category.HeaderText = "category";
-            this.category.Name = "category";
-            // 
-            // price
-            // 
-            this.price.HeaderText = "price";
-            this.price.Name = "price";
-            // 
-            // description
-            // 
-            this.description.HeaderText = "description";
-            this.description.Name = "description";
-            this.description.Visible = false;
             // 
             // product_description_textbox
             // 
@@ -394,6 +370,7 @@
             this.message});
             this.product_comment_datagrid.Location = new System.Drawing.Point(401, 260);
             this.product_comment_datagrid.Name = "product_comment_datagrid";
+            this.product_comment_datagrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.product_comment_datagrid.Size = new System.Drawing.Size(469, 129);
             this.product_comment_datagrid.TabIndex = 31;
             this.product_comment_datagrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.product_comment_datagrid_CellContentClick);
@@ -452,6 +429,7 @@
             this.atsiliepimas});
             this.review_datagrid.Location = new System.Drawing.Point(401, 408);
             this.review_datagrid.Name = "review_datagrid";
+            this.review_datagrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.review_datagrid.Size = new System.Drawing.Size(469, 150);
             this.review_datagrid.TabIndex = 35;
             this.review_datagrid.SelectionChanged += new System.EventHandler(this.review_datagrid_SelectionChanged);
@@ -525,7 +503,7 @@
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(69, 13);
             this.label15.TabIndex = 41;
-            this.label15.Text = "Apibudinimas";
+            this.label15.Text = "Apibūdinimas";
             // 
             // company_name_textbox
             // 
@@ -634,6 +612,37 @@
             this.contact_update_label.Size = new System.Drawing.Size(0, 13);
             this.contact_update_label.TabIndex = 54;
             // 
+            // ID
+            // 
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            // 
+            // name
+            // 
+            this.name.HeaderText = "name";
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
+            // 
+            // category
+            // 
+            this.category.HeaderText = "category";
+            this.category.Name = "category";
+            this.category.ReadOnly = true;
+            // 
+            // price
+            // 
+            this.price.HeaderText = "price";
+            this.price.Name = "price";
+            this.price.ReadOnly = true;
+            // 
+            // description
+            // 
+            this.description.HeaderText = "description";
+            this.description.Name = "description";
+            this.description.ReadOnly = true;
+            this.description.Visible = false;
+            // 
             // Admin_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -726,11 +735,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn description;
-        private System.Windows.Forms.DataGridViewTextBoxColumn price;
-        private System.Windows.Forms.DataGridViewTextBoxColumn category;
-        private System.Windows.Forms.DataGridViewTextBoxColumn name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.TextBox category_id_textobx;
         private System.Windows.Forms.TextBox category_name_textbox;
         private System.Windows.Forms.Button confirm_category;
@@ -769,5 +773,10 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label contact_update_label;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn category;
+        private System.Windows.Forms.DataGridViewTextBoxColumn price;
+        private System.Windows.Forms.DataGridViewTextBoxColumn description;
     }
 }
