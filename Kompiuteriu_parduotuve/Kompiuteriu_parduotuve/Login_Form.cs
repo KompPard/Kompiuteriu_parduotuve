@@ -17,13 +17,13 @@ namespace Kompiuteriu_parduotuve
             login_state=user.User_conn(username_textbox.Text, password_textbox.Text);
             if (login_state == true)
             {
-                new Admin_form().Show();
+                new Admin_Form().Show();
                 Close();
             }
         }
         private void main_form_button_Click(object sender, EventArgs e)
         {
-            Form1 main_form = new Form1();
+            Main_Form main_form = new Main_Form();
             main_form.Show();
             Close();
         }

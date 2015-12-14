@@ -4,12 +4,12 @@ using System.Windows.Forms;
 
 namespace Kompiuteriu_parduotuve
 {
-    public partial class Form1 : Form
+    public partial class Main_Form : Form
     {
-        string cart_id;
+        public static string cart_id;
         string product_selected_id = "";
         DataTable dt = null;
-        public Form1()
+        public Main_Form()
         {
             InitializeComponent();
         }
@@ -147,6 +147,16 @@ namespace Kompiuteriu_parduotuve
             {
                 cart.refill_cart_table(cart_Datagrid, cart_id);
             }
+        }
+        private void order_button_Click(object sender, EventArgs e)
+        {
+            new Order_Form().Show();
+            Hide();
+        }
+        private void clear_cart_button_Click(object sender, EventArgs e)
+        {
+            clear_cart();
+            refresh_cart_table();
         }
     }
 }

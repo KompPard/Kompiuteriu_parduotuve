@@ -4,12 +4,12 @@ using System.Windows.Forms;
 
 namespace Kompiuteriu_parduotuve
 {
-    public partial class Admin_form : Form
+    public partial class Admin_Form : Form
     {
         string product_selected_id = "", product_comment_id="", review_id="";
         int action = 0;
         DataTable dt = new DataTable();
-        public Admin_form()
+        public Admin_Form()
         {
             InitializeComponent();
         }
@@ -195,7 +195,7 @@ namespace Kompiuteriu_parduotuve
         }
         private void to_main_form_Click(object sender, EventArgs e)
         {
-            Form1 main = new Form1();
+            Main_Form main = new Main_Form();
             main.Show();
             Close();
         }
@@ -219,25 +219,14 @@ namespace Kompiuteriu_parduotuve
                 refresh_review_table();
             }
         }
-
         private void update_contacts_button_Click(object sender, EventArgs e)
         {
             using (Contacts contacts = new Contacts(new Database()))
             {
-                if (contacts.update(company_name_textbox.Text, company_address_textbox.Text, company_phone_textbox.Text, company_email_textbox.Text, company_owner_textbox.Text))
-                {
-                    contact_update_label.ForeColor = System.Drawing.Color.Green;
-                    contact_update_label.Text = "Atnaujinta";
-                }
-                else
-                {
-                    contact_update_label.ForeColor = System.Drawing.Color.Red;
-                    contact_update_label.Text = "Nepavyko atnaujinti duomenų";
-                }
+                contacts.update(company_name_textbox.Text, company_address_textbox.Text, company_phone_textbox.Text, company_email_textbox.Text, company_owner_textbox.Text);
             }
             refresh_contacts_values();
         }
-
         private void delete_comment_button_Click(object sender, EventArgs e)
         {
             using(Commenting comm=new Comment())
@@ -246,12 +235,38 @@ namespace Kompiuteriu_parduotuve
                 refresh_comment_table();
             }
         }
+        private void admin_orders_Datagrid_SelectionChanged(object sender, EventArgs e)
+        {
+            if (!admin_orders_Datagrid.SelectedRows.Contains(admin_orders_Datagrid.Rows[-1]))
+            {
+                admin_cart_Datagrid.Rows.Clear();
+                using (Cart cart = new Cart())
+                {
+                    dt = cart.view_cart(admin_orders_Datagrid.SelectedRows[0].Cells[7].Value.ToString());
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        admin_cart_Datagrid.Rows.Add(dr.ItemArray);
+                    }
+                }
+            }
+        }
         private void product_comment_datagrid_SelectionChanged(object sender, EventArgs e)
         {
             foreach (DataGridViewRow row in product_comment_datagrid.SelectedRows)
             {
                product_comment_id = product_selected_id = row.Cells[0].Value.ToString();
                 Console.WriteLine(product_comment_id);
+            }
+        }
+        private void fill_orders()
+        {
+            using (Order order = new Order())
+            {
+                dt = order.show_orders();
+                foreach (DataRow dr in dt.Rows)
+                {
+                    admin_orders_Datagrid.Rows.Add(dr.ItemArray);
+                }
             }
         }
     }

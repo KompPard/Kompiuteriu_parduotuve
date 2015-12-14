@@ -1,6 +1,6 @@
 ﻿namespace Kompiuteriu_parduotuve
 {
-    partial class Form1
+    partial class Main_Form
     {
         /// <summary>
         /// Required designer variable.
@@ -52,27 +52,39 @@
             this.review_message_textbox = new System.Windows.Forms.RichTextBox();
             this.review_username_textbox = new System.Windows.Forms.TextBox();
             this.contacts_box = new System.Windows.Forms.RichTextBox();
-            this.label8 = new System.Windows.Forms.Label();
             this.cart_Datagrid = new System.Windows.Forms.DataGridView();
-            this.label9 = new System.Windows.Forms.Label();
-            this.add_to_cart_button = new System.Windows.Forms.Button();
-            this.add_to_cart_label = new System.Windows.Forms.Label();
             this.cart_product_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cart_item_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.product_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cart_item_price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label9 = new System.Windows.Forms.Label();
+            this.add_to_cart_button = new System.Windows.Forms.Button();
+            this.add_to_cart_label = new System.Windows.Forms.Label();
+            this.order_button = new System.Windows.Forms.Button();
+            this.main_tab = new System.Windows.Forms.TabControl();
+            this.products_tab = new System.Windows.Forms.TabPage();
+            this.label10 = new System.Windows.Forms.Label();
+            this.cart_tab = new System.Windows.Forms.TabPage();
+            this.clear_cart_button = new System.Windows.Forms.Button();
+            this.search_tab = new System.Windows.Forms.TabPage();
+            this.contacts_tab = new System.Windows.Forms.TabPage();
+            this.label8 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.products_Datagrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cart_Datagrid)).BeginInit();
+            this.main_tab.SuspendLayout();
+            this.products_tab.SuspendLayout();
+            this.cart_tab.SuspendLayout();
+            this.contacts_tab.SuspendLayout();
             this.SuspendLayout();
             // 
             // Login_button
             // 
-            this.Login_button.Location = new System.Drawing.Point(1186, 2);
+            this.Login_button.Location = new System.Drawing.Point(531, 12);
             this.Login_button.Name = "Login_button";
-            this.Login_button.Size = new System.Drawing.Size(75, 23);
+            this.Login_button.Size = new System.Drawing.Size(100, 23);
             this.Login_button.TabIndex = 0;
-            this.Login_button.Text = "Prisijungti";
+            this.Login_button.Text = "Administravimas";
             this.Login_button.UseVisualStyleBackColor = true;
             this.Login_button.Click += new System.EventHandler(this.Login_button_Click);
             // 
@@ -87,7 +99,7 @@
             this.category,
             this.price,
             this.description});
-            this.products_Datagrid.Location = new System.Drawing.Point(12, 2);
+            this.products_Datagrid.Location = new System.Drawing.Point(6, 43);
             this.products_Datagrid.Name = "products_Datagrid";
             this.products_Datagrid.ReadOnly = true;
             this.products_Datagrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -104,48 +116,48 @@
             // 
             // name
             // 
-            this.name.HeaderText = "Name";
+            this.name.HeaderText = "Pavadinimas";
             this.name.Name = "name";
             this.name.ReadOnly = true;
             // 
             // category
             // 
-            this.category.HeaderText = "Category";
+            this.category.HeaderText = "Kategorija";
             this.category.Name = "category";
             this.category.ReadOnly = true;
             // 
             // price
             // 
-            this.price.HeaderText = "Price";
+            this.price.HeaderText = "Kaina";
             this.price.Name = "price";
             this.price.ReadOnly = true;
             // 
             // description
             // 
-            this.description.HeaderText = "Description";
+            this.description.HeaderText = "Aprašymas";
             this.description.Name = "description";
             this.description.ReadOnly = true;
             this.description.Visible = false;
             // 
             // products_description
             // 
-            this.products_description.Location = new System.Drawing.Point(361, 24);
+            this.products_description.Location = new System.Drawing.Point(6, 300);
             this.products_description.Name = "products_description";
             this.products_description.ReadOnly = true;
-            this.products_description.Size = new System.Drawing.Size(175, 216);
+            this.products_description.Size = new System.Drawing.Size(343, 107);
             this.products_description.TabIndex = 2;
             this.products_description.Text = "";
             // 
             // username_textbox
             // 
-            this.username_textbox.Location = new System.Drawing.Point(100, 246);
+            this.username_textbox.Location = new System.Drawing.Point(428, 281);
             this.username_textbox.Name = "username_textbox";
             this.username_textbox.Size = new System.Drawing.Size(176, 20);
             this.username_textbox.TabIndex = 3;
             // 
             // comment_textbox
             // 
-            this.comment_textbox.Location = new System.Drawing.Point(100, 272);
+            this.comment_textbox.Location = new System.Drawing.Point(428, 307);
             this.comment_textbox.Name = "comment_textbox";
             this.comment_textbox.Size = new System.Drawing.Size(175, 123);
             this.comment_textbox.TabIndex = 4;
@@ -154,107 +166,107 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 249);
+            this.label1.Location = new System.Drawing.Point(355, 284);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(84, 13);
+            this.label1.Size = new System.Drawing.Size(67, 13);
             this.label1.TabIndex = 5;
-            this.label1.Text = "Vartotojo vardas";
+            this.label1.Text = "Jūsų vardas:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 275);
+            this.label2.Location = new System.Drawing.Point(356, 310);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(63, 13);
+            this.label2.Size = new System.Drawing.Size(66, 13);
             this.label2.TabIndex = 6;
-            this.label2.Text = "Komentaras";
+            this.label2.Text = "Komentaras:";
             // 
             // confirm_comment
             // 
-            this.confirm_comment.Location = new System.Drawing.Point(100, 402);
+            this.confirm_comment.Location = new System.Drawing.Point(427, 436);
             this.confirm_comment.Name = "confirm_comment";
             this.confirm_comment.Size = new System.Drawing.Size(176, 23);
             this.confirm_comment.TabIndex = 7;
-            this.confirm_comment.Text = "Įvęsti komentarą";
+            this.confirm_comment.Text = "Komentuoti";
             this.confirm_comment.UseVisualStyleBackColor = true;
             this.confirm_comment.Click += new System.EventHandler(this.confirm_comment_Click);
             // 
             // user_comments
             // 
-            this.user_comments.Location = new System.Drawing.Point(542, 24);
+            this.user_comments.Location = new System.Drawing.Point(355, 43);
             this.user_comments.Name = "user_comments";
             this.user_comments.ReadOnly = true;
-            this.user_comments.Size = new System.Drawing.Size(175, 216);
+            this.user_comments.Size = new System.Drawing.Size(249, 238);
             this.user_comments.TabIndex = 8;
             this.user_comments.Text = "";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(394, 9);
+            this.label3.Location = new System.Drawing.Point(3, 284);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(104, 13);
+            this.label3.Size = new System.Drawing.Size(107, 13);
             this.label3.TabIndex = 9;
-            this.label3.Text = "Prekės apibūdinimas";
+            this.label3.Text = "Prekės apibūdinimas:";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(562, 9);
+            this.label4.Location = new System.Drawing.Point(352, 27);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(139, 13);
+            this.label4.Size = new System.Drawing.Size(158, 13);
             this.label4.TabIndex = 10;
-            this.label4.Text = "Pirkėjų nuomonė apie prekę";
+            this.label4.Text = "Pirkėjų nuomonė apie šią prekę:";
             // 
             // user_reviews
             // 
-            this.user_reviews.Location = new System.Drawing.Point(1005, 24);
+            this.user_reviews.Location = new System.Drawing.Point(288, 59);
             this.user_reviews.Name = "user_reviews";
             this.user_reviews.ReadOnly = true;
-            this.user_reviews.Size = new System.Drawing.Size(175, 216);
+            this.user_reviews.Size = new System.Drawing.Size(265, 204);
             this.user_reviews.TabIndex = 11;
             this.user_reviews.Text = "";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(1012, 12);
+            this.label5.Location = new System.Drawing.Point(288, 43);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(156, 13);
+            this.label5.Size = new System.Drawing.Size(159, 13);
             this.label5.TabIndex = 12;
-            this.label5.Text = "Pirkėjų nuomonė apie aplikaciją";
+            this.label5.Text = "Pirkėjų nuomonė apie aplikaciją:";
             // 
             // confirm_review
             // 
-            this.confirm_review.Location = new System.Drawing.Point(1055, 432);
+            this.confirm_review.Location = new System.Drawing.Point(378, 424);
             this.confirm_review.Name = "confirm_review";
-            this.confirm_review.Size = new System.Drawing.Size(176, 23);
+            this.confirm_review.Size = new System.Drawing.Size(175, 23);
             this.confirm_review.TabIndex = 17;
-            this.confirm_review.Text = "Įvęsti Atsiliepimą";
+            this.confirm_review.Text = "Palikti atsiliepimą";
             this.confirm_review.UseVisualStyleBackColor = true;
             this.confirm_review.Click += new System.EventHandler(this.confirm_review_Click);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(964, 305);
+            this.label6.Location = new System.Drawing.Point(308, 298);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(61, 13);
+            this.label6.Size = new System.Drawing.Size(64, 13);
             this.label6.TabIndex = 16;
-            this.label6.Text = "Atsiliepimas";
+            this.label6.Text = "Atsiliepimas:";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(964, 279);
+            this.label7.Location = new System.Drawing.Point(285, 272);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(84, 13);
+            this.label7.Size = new System.Drawing.Size(87, 13);
             this.label7.TabIndex = 15;
-            this.label7.Text = "Vartotojo vardas";
+            this.label7.Text = "Vartotojo vardas:";
             // 
             // review_message_textbox
             // 
-            this.review_message_textbox.Location = new System.Drawing.Point(1055, 302);
+            this.review_message_textbox.Location = new System.Drawing.Point(378, 295);
             this.review_message_textbox.Name = "review_message_textbox";
             this.review_message_textbox.Size = new System.Drawing.Size(175, 123);
             this.review_message_textbox.TabIndex = 14;
@@ -262,28 +274,19 @@
             // 
             // review_username_textbox
             // 
-            this.review_username_textbox.Location = new System.Drawing.Point(1055, 276);
+            this.review_username_textbox.Location = new System.Drawing.Point(378, 269);
             this.review_username_textbox.Name = "review_username_textbox";
-            this.review_username_textbox.Size = new System.Drawing.Size(176, 20);
+            this.review_username_textbox.Size = new System.Drawing.Size(175, 20);
             this.review_username_textbox.TabIndex = 13;
             // 
             // contacts_box
             // 
-            this.contacts_box.Location = new System.Drawing.Point(282, 359);
+            this.contacts_box.Location = new System.Drawing.Point(53, 59);
             this.contacts_box.Name = "contacts_box";
             this.contacts_box.ReadOnly = true;
-            this.contacts_box.Size = new System.Drawing.Size(156, 96);
+            this.contacts_box.Size = new System.Drawing.Size(229, 123);
             this.contacts_box.TabIndex = 18;
             this.contacts_box.Text = "";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(282, 340);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(52, 13);
-            this.label8.TabIndex = 19;
-            this.label8.Text = "Kontaktai";
             // 
             // cart_Datagrid
             // 
@@ -295,46 +298,20 @@
             this.product_id,
             this.quantity,
             this.cart_item_price});
-            this.cart_Datagrid.Location = new System.Drawing.Point(444, 305);
+            this.cart_Datagrid.Location = new System.Drawing.Point(79, 90);
             this.cart_Datagrid.Name = "cart_Datagrid";
             this.cart_Datagrid.ReadOnly = true;
             this.cart_Datagrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.cart_Datagrid.Size = new System.Drawing.Size(345, 150);
+            this.cart_Datagrid.Size = new System.Drawing.Size(467, 150);
             this.cart_Datagrid.TabIndex = 20;
             this.cart_Datagrid.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.cart_Datagrid_RowsRemoved);
             // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(444, 286);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(81, 13);
-            this.label9.TabIndex = 21;
-            this.label9.Text = "Prekių krepšelis";
-            // 
-            // add_to_cart_button
-            // 
-            this.add_to_cart_button.Location = new System.Drawing.Point(285, 246);
-            this.add_to_cart_button.Name = "add_to_cart_button";
-            this.add_to_cart_button.Size = new System.Drawing.Size(75, 50);
-            this.add_to_cart_button.TabIndex = 22;
-            this.add_to_cart_button.Text = "Pridėti pasirinktą į krepšelį";
-            this.add_to_cart_button.UseVisualStyleBackColor = true;
-            this.add_to_cart_button.Click += new System.EventHandler(this.add_to_cart_button_Click);
-            // 
-            // add_to_cart_label
-            // 
-            this.add_to_cart_label.AutoSize = true;
-            this.add_to_cart_label.Location = new System.Drawing.Point(285, 304);
-            this.add_to_cart_label.Name = "add_to_cart_label";
-            this.add_to_cart_label.Size = new System.Drawing.Size(0, 13);
-            this.add_to_cart_label.TabIndex = 23;
-            // 
             // cart_product_name
             // 
-            this.cart_product_name.HeaderText = "Name";
+            this.cart_product_name.HeaderText = "Prekės pavadinimas";
             this.cart_product_name.Name = "cart_product_name";
             this.cart_product_name.ReadOnly = true;
+            this.cart_product_name.Width = 220;
             // 
             // cart_item_id
             // 
@@ -352,52 +329,179 @@
             // 
             // quantity
             // 
-            this.quantity.HeaderText = "Quantity";
+            this.quantity.HeaderText = "Kiekis";
             this.quantity.Name = "quantity";
             this.quantity.ReadOnly = true;
             // 
             // cart_item_price
             // 
-            this.cart_item_price.HeaderText = "Price";
+            this.cart_item_price.HeaderText = "Suma";
             this.cart_item_price.Name = "cart_item_price";
             this.cart_item_price.ReadOnly = true;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(76, 74);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(84, 13);
+            this.label9.TabIndex = 21;
+            this.label9.Text = "Prekių krepšelis:";
+            // 
+            // add_to_cart_button
+            // 
+            this.add_to_cart_button.Location = new System.Drawing.Point(242, 413);
+            this.add_to_cart_button.Name = "add_to_cart_button";
+            this.add_to_cart_button.Size = new System.Drawing.Size(107, 46);
+            this.add_to_cart_button.TabIndex = 22;
+            this.add_to_cart_button.Text = "Pridėti pasirinktą prekę į krepšelį";
+            this.add_to_cart_button.UseVisualStyleBackColor = true;
+            this.add_to_cart_button.Click += new System.EventHandler(this.add_to_cart_button_Click);
+            // 
+            // add_to_cart_label
+            // 
+            this.add_to_cart_label.AutoSize = true;
+            this.add_to_cart_label.Location = new System.Drawing.Point(279, 339);
+            this.add_to_cart_label.Name = "add_to_cart_label";
+            this.add_to_cart_label.Size = new System.Drawing.Size(0, 13);
+            this.add_to_cart_label.TabIndex = 23;
+            // 
+            // order_button
+            // 
+            this.order_button.Location = new System.Drawing.Point(442, 246);
+            this.order_button.Name = "order_button";
+            this.order_button.Size = new System.Drawing.Size(104, 39);
+            this.order_button.TabIndex = 24;
+            this.order_button.Text = "Pateikti užsakymą";
+            this.order_button.UseVisualStyleBackColor = true;
+            this.order_button.Click += new System.EventHandler(this.order_button_Click);
+            // 
+            // main_tab
+            // 
+            this.main_tab.Controls.Add(this.products_tab);
+            this.main_tab.Controls.Add(this.cart_tab);
+            this.main_tab.Controls.Add(this.search_tab);
+            this.main_tab.Controls.Add(this.contacts_tab);
+            this.main_tab.Location = new System.Drawing.Point(12, 41);
+            this.main_tab.Name = "main_tab";
+            this.main_tab.SelectedIndex = 0;
+            this.main_tab.Size = new System.Drawing.Size(623, 519);
+            this.main_tab.TabIndex = 25;
+            // 
+            // products_tab
+            // 
+            this.products_tab.Controls.Add(this.label10);
+            this.products_tab.Controls.Add(this.products_Datagrid);
+            this.products_tab.Controls.Add(this.label4);
+            this.products_tab.Controls.Add(this.products_description);
+            this.products_tab.Controls.Add(this.label3);
+            this.products_tab.Controls.Add(this.add_to_cart_label);
+            this.products_tab.Controls.Add(this.user_comments);
+            this.products_tab.Controls.Add(this.username_textbox);
+            this.products_tab.Controls.Add(this.add_to_cart_button);
+            this.products_tab.Controls.Add(this.comment_textbox);
+            this.products_tab.Controls.Add(this.label1);
+            this.products_tab.Controls.Add(this.label2);
+            this.products_tab.Controls.Add(this.confirm_comment);
+            this.products_tab.Location = new System.Drawing.Point(4, 22);
+            this.products_tab.Name = "products_tab";
+            this.products_tab.Padding = new System.Windows.Forms.Padding(3);
+            this.products_tab.Size = new System.Drawing.Size(615, 493);
+            this.products_tab.TabIndex = 0;
+            this.products_tab.Text = "Prekių katalogas";
+            this.products_tab.UseVisualStyleBackColor = true;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(3, 27);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(89, 13);
+            this.label10.TabIndex = 24;
+            this.label10.Text = "Prekių katalogas:";
+            // 
+            // cart_tab
+            // 
+            this.cart_tab.Controls.Add(this.clear_cart_button);
+            this.cart_tab.Controls.Add(this.label9);
+            this.cart_tab.Controls.Add(this.order_button);
+            this.cart_tab.Controls.Add(this.cart_Datagrid);
+            this.cart_tab.Location = new System.Drawing.Point(4, 22);
+            this.cart_tab.Name = "cart_tab";
+            this.cart_tab.Padding = new System.Windows.Forms.Padding(3);
+            this.cart_tab.Size = new System.Drawing.Size(615, 493);
+            this.cart_tab.TabIndex = 1;
+            this.cart_tab.Text = "Krepšelis";
+            this.cart_tab.UseVisualStyleBackColor = true;
+            // 
+            // clear_cart_button
+            // 
+            this.clear_cart_button.Location = new System.Drawing.Point(79, 246);
+            this.clear_cart_button.Name = "clear_cart_button";
+            this.clear_cart_button.Size = new System.Drawing.Size(104, 39);
+            this.clear_cart_button.TabIndex = 25;
+            this.clear_cart_button.Text = "Išvalyti krepšelį";
+            this.clear_cart_button.UseVisualStyleBackColor = true;
+            this.clear_cart_button.Click += new System.EventHandler(this.clear_cart_button_Click);
+            // 
+            // search_tab
+            // 
+            this.search_tab.Location = new System.Drawing.Point(4, 22);
+            this.search_tab.Name = "search_tab";
+            this.search_tab.Padding = new System.Windows.Forms.Padding(3);
+            this.search_tab.Size = new System.Drawing.Size(615, 493);
+            this.search_tab.TabIndex = 3;
+            this.search_tab.Text = "Paieška / Palyginimas";
+            this.search_tab.UseVisualStyleBackColor = true;
+            // 
+            // contacts_tab
+            // 
+            this.contacts_tab.Controls.Add(this.label8);
+            this.contacts_tab.Controls.Add(this.label5);
+            this.contacts_tab.Controls.Add(this.user_reviews);
+            this.contacts_tab.Controls.Add(this.review_username_textbox);
+            this.contacts_tab.Controls.Add(this.contacts_box);
+            this.contacts_tab.Controls.Add(this.label7);
+            this.contacts_tab.Controls.Add(this.confirm_review);
+            this.contacts_tab.Controls.Add(this.review_message_textbox);
+            this.contacts_tab.Controls.Add(this.label6);
+            this.contacts_tab.Location = new System.Drawing.Point(4, 22);
+            this.contacts_tab.Name = "contacts_tab";
+            this.contacts_tab.Padding = new System.Windows.Forms.Padding(3);
+            this.contacts_tab.Size = new System.Drawing.Size(615, 493);
+            this.contacts_tab.TabIndex = 2;
+            this.contacts_tab.Text = "Kontaktai";
+            this.contacts_tab.UseVisualStyleBackColor = true;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(50, 43);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(116, 13);
+            this.label8.TabIndex = 19;
+            this.label8.Text = "Kontaktiniai duomenys:";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1261, 473);
-            this.Controls.Add(this.add_to_cart_label);
-            this.Controls.Add(this.add_to_cart_button);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.cart_Datagrid);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.contacts_box);
-            this.Controls.Add(this.confirm_review);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.review_message_textbox);
-            this.Controls.Add(this.review_username_textbox);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.user_reviews);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.user_comments);
-            this.Controls.Add(this.confirm_comment);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.comment_textbox);
-            this.Controls.Add(this.username_textbox);
-            this.Controls.Add(this.products_description);
-            this.Controls.Add(this.products_Datagrid);
+            this.ClientSize = new System.Drawing.Size(646, 571);
+            this.Controls.Add(this.main_tab);
             this.Controls.Add(this.Login_button);
             this.Name = "Form1";
             this.Text = "Kompiuterių parduotuvė";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.products_Datagrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cart_Datagrid)).EndInit();
+            this.main_tab.ResumeLayout(false);
+            this.products_tab.ResumeLayout(false);
+            this.products_tab.PerformLayout();
+            this.cart_tab.ResumeLayout(false);
+            this.cart_tab.PerformLayout();
+            this.contacts_tab.ResumeLayout(false);
+            this.contacts_tab.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -422,11 +526,11 @@
         private System.Windows.Forms.RichTextBox review_message_textbox;
         private System.Windows.Forms.TextBox review_username_textbox;
         private System.Windows.Forms.RichTextBox contacts_box;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.DataGridView cart_Datagrid;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button add_to_cart_button;
         private System.Windows.Forms.Label add_to_cart_label;
+        private System.Windows.Forms.Button order_button;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.DataGridViewTextBoxColumn category;
@@ -437,6 +541,14 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn product_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn quantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn cart_item_price;
+        private System.Windows.Forms.TabControl main_tab;
+        private System.Windows.Forms.TabPage products_tab;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TabPage cart_tab;
+        private System.Windows.Forms.Button clear_cart_button;
+        private System.Windows.Forms.TabPage contacts_tab;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TabPage search_tab;
     }
 }
 
