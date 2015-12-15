@@ -25,6 +25,7 @@ namespace Kompiuteriu_parduotuve
             refresh_reviews();
             show_contacts();
             fill_category_dropdown();
+            search_category_box.SelectedIndex = search_category_box.Items.Count - 1;
         }
         private void show_contacts()
         {
@@ -129,16 +130,7 @@ namespace Kompiuteriu_parduotuve
         {
             using (Cart cart = new Cart())
             {
-                if(cart.add(Convert.ToInt16(products_Datagrid.SelectedRows[0].Cells[0].Value), 1, cart_id) == true) //1 default
-                {
-                    add_to_cart_label.ForeColor = System.Drawing.Color.Green;
-                    add_to_cart_label.Text = "Pridėta";
-                }
-                else
-                {
-                    add_to_cart_label.ForeColor = System.Drawing.Color.Red;
-                    add_to_cart_label.Text = "Klaida";
-                }
+                cart.add(Convert.ToInt16(products_Datagrid.SelectedRows[0].Cells[0].Value), 1, cart_id); //1 default
             }
             refresh_cart_table();
         }
@@ -199,6 +191,23 @@ namespace Kompiuteriu_parduotuve
             {
                 search_results_Datagrid.Rows.Add(dr.ItemArray);
             }
+        }
+        private void search_results_Datagrid_SelectionChanged(object sender, EventArgs e)
+        {
+            search_results_desc_box.Text = "";
+            if (search_results_Datagrid.Rows.Count > -1 && search_results_Datagrid.SelectedRows.Count > 0)
+            {
+                search_results_desc_box.Text = search_results_Datagrid.SelectedRows[0].Cells[4].Value.ToString();
+            }
+        }
+
+        private void search_add_to_cart_button_Click(object sender, EventArgs e)
+        {
+            using (Cart cart = new Cart())
+            {
+                cart.add(Convert.ToInt16(search_results_Datagrid.SelectedRows[0].Cells[0].Value), 1, cart_id);
+            }
+            refresh_cart_table();
         }
     }
 }

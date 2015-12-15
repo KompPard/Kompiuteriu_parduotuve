@@ -8,12 +8,16 @@ namespace Kompiuteriu_parduotuve
     class Search : IDisposable
     {
         Database DB = new Database();
+        public Search()
+        {
+            DB.dt = new DataTable();
+        }
         public DataTable search()
         {
             try
             {
                 DB.Connect();
-                DB.adapter = new SqlDataAdapter("SELECT FROM dbo.Product", DB.conn);
+                DB.adapter = new SqlDataAdapter("SELECT * FROM dbo.Product", DB.conn);
                 DB.adapter.Fill(DB.dt);
             }
             catch (Exception ex)
@@ -27,7 +31,7 @@ namespace Kompiuteriu_parduotuve
             try
             {
                 DB.Connect();
-                DB.adapter = new SqlDataAdapter("SELECT FROM dbo.Product WHERE name LIKE " + name + "", DB.conn);
+                DB.adapter = new SqlDataAdapter("SELECT * FROM dbo.Product WHERE name LIKE '%" + name + "%'", DB.conn);
                 DB.adapter.Fill(DB.dt);
             }
             catch (Exception ex)
@@ -41,7 +45,7 @@ namespace Kompiuteriu_parduotuve
             try
             {
                 DB.Connect();
-                DB.adapter = new SqlDataAdapter("SELECT FROM dbo.Product WHERE category=" + category + "", DB.conn);
+                DB.adapter = new SqlDataAdapter("SELECT * FROM dbo.Product WHERE category=" + category + "", DB.conn);
                 DB.adapter.Fill(DB.dt);
             }
             catch (Exception ex)
@@ -55,7 +59,7 @@ namespace Kompiuteriu_parduotuve
             try
             {
                 DB.Connect();
-                DB.adapter = new SqlDataAdapter("SELECT FROM dbo.Product WHERE name LIKE " + name + " AND category=" + category + "", DB.conn);
+                DB.adapter = new SqlDataAdapter("SELECT * FROM dbo.Product WHERE name LIKE '%" + name + "%' AND category=" + category + "", DB.conn);
                 DB.adapter.Fill(DB.dt);
             }
             catch (Exception ex)
