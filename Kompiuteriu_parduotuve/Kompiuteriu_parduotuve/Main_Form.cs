@@ -99,7 +99,7 @@ namespace Kompiuteriu_parduotuve
                     dt = comm.get(dt, int.Parse(product_selected_id));
                     foreach (DataRow dr in dt.Rows)
                     {
-                        // products_Datagrid.Rows.Add(dr.ItemArray);
+                        //products_Datagrid.Rows.Add(dr.ItemArray);
                         user_comments.AppendText(dt.Rows[i].Field<string>("author"));
                         user_comments.AppendText(": ");
                         user_comments.AppendText(dt.Rows[i].Field<string>("message"));
