@@ -209,5 +209,33 @@ namespace Kompiuteriu_parduotuve
             }
             refresh_cart_table();
         }
+
+        private void compare_button_Click(object sender, EventArgs e)
+        {
+            if (search_results_Datagrid.SelectedRows.Count == 2)
+            {
+                using (Compare compare = new Compare(Convert.ToInt16(search_results_Datagrid.SelectedRows[0].Cells[0].Value), Convert.ToInt16(search_results_Datagrid.SelectedRows[1].Cells[0].Value)))
+                {
+                    dt = compare.compare();
+                    product1_box.Text = dt.Rows[0][1] + "\nKaina: " + dt.Rows[0][3] + "\nAprašymas: " + dt.Rows[0][4];
+                    product1_box.Tag = dt.Rows[0][0];
+                    product2_box.Text = dt.Rows[1][1] + "\nKaina: " + dt.Rows[1][3] + "\nAprašymas: " + dt.Rows[1][4];
+                    product2_box.Tag = dt.Rows[1][0];
+                }
+            }
+            else
+                MessageBox.Show("Norint palyginti reikia pasirinkti dvi prekes");
+        }
+        private void swap_button_Click(object sender, EventArgs e)
+        {
+            using (Compare compare = new Compare(Convert.ToInt16(product1_box.Tag), Convert.ToInt16(product2_box.Tag)))
+            {
+                dt = compare.change_sides();
+                product1_box.Text = dt.Rows[0][1] + "\nKaina: " + dt.Rows[0][3] + "\nAprašymas: " + dt.Rows[0][4];
+                product1_box.Tag = dt.Rows[0][0];
+                product2_box.Text = dt.Rows[1][1] + "\nKaina: " + dt.Rows[1][3] + "\nAprašymas: " + dt.Rows[1][4];
+                product2_box.Tag = dt.Rows[1][0];
+            }
+        }
     }
 }

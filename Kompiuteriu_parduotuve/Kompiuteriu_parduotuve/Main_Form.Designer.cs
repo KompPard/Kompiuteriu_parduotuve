@@ -84,6 +84,12 @@
             this.search_description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contacts_tab = new System.Windows.Forms.TabPage();
             this.label8 = new System.Windows.Forms.Label();
+            this.product1_box = new System.Windows.Forms.RichTextBox();
+            this.product2_box = new System.Windows.Forms.RichTextBox();
+            this.swap_button = new System.Windows.Forms.Button();
+            this.compare_box = new System.Windows.Forms.GroupBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.compare_button = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.products_Datagrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cart_Datagrid)).BeginInit();
             this.main_tab.SuspendLayout();
@@ -92,6 +98,7 @@
             this.search_tab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.search_results_Datagrid)).BeginInit();
             this.contacts_tab.SuspendLayout();
+            this.compare_box.SuspendLayout();
             this.SuspendLayout();
             // 
             // Login_button
@@ -453,6 +460,8 @@
             // 
             // search_tab
             // 
+            this.search_tab.Controls.Add(this.compare_button);
+            this.search_tab.Controls.Add(this.compare_box);
             this.search_tab.Controls.Add(this.search_button);
             this.search_tab.Controls.Add(this.search_category_box);
             this.search_tab.Controls.Add(this.label14);
@@ -631,6 +640,65 @@
             this.label8.TabIndex = 19;
             this.label8.Text = "Kontaktiniai duomenys:";
             // 
+            // product1_box
+            // 
+            this.product1_box.Location = new System.Drawing.Point(9, 42);
+            this.product1_box.Name = "product1_box";
+            this.product1_box.Size = new System.Drawing.Size(178, 105);
+            this.product1_box.TabIndex = 29;
+            this.product1_box.Text = "";
+            // 
+            // product2_box
+            // 
+            this.product2_box.Location = new System.Drawing.Point(328, 42);
+            this.product2_box.Name = "product2_box";
+            this.product2_box.Size = new System.Drawing.Size(178, 105);
+            this.product2_box.TabIndex = 30;
+            this.product2_box.Text = "";
+            // 
+            // swap_button
+            // 
+            this.swap_button.Location = new System.Drawing.Point(221, 79);
+            this.swap_button.Name = "swap_button";
+            this.swap_button.Size = new System.Drawing.Size(75, 23);
+            this.swap_button.TabIndex = 32;
+            this.swap_button.Text = "Apkeisti";
+            this.swap_button.UseVisualStyleBackColor = true;
+            this.swap_button.Click += new System.EventHandler(this.swap_button_Click);
+            // 
+            // compare_box
+            // 
+            this.compare_box.Controls.Add(this.label15);
+            this.compare_box.Controls.Add(this.product1_box);
+            this.compare_box.Controls.Add(this.swap_button);
+            this.compare_box.Controls.Add(this.product2_box);
+            this.compare_box.Location = new System.Drawing.Point(54, 297);
+            this.compare_box.Name = "compare_box";
+            this.compare_box.Size = new System.Drawing.Size(512, 164);
+            this.compare_box.TabIndex = 33;
+            this.compare_box.TabStop = false;
+            this.compare_box.Text = "Produktų palyginimas";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(6, 16);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(385, 13);
+            this.label15.TabIndex = 33;
+            this.label15.Text = "Paieškos lange pasirinkite dvi prekes ir spauskite mygtuką \"Palyginti pasirinktas" +
+    "\"";
+            // 
+            // compare_button
+            // 
+            this.compare_button.Location = new System.Drawing.Point(6, 245);
+            this.compare_button.Name = "compare_button";
+            this.compare_button.Size = new System.Drawing.Size(107, 46);
+            this.compare_button.TabIndex = 34;
+            this.compare_button.Text = "Palyginti pasirinktas";
+            this.compare_button.UseVisualStyleBackColor = true;
+            this.compare_button.Click += new System.EventHandler(this.compare_button_Click);
+            // 
             // Main_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -653,6 +721,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.search_results_Datagrid)).EndInit();
             this.contacts_tab.ResumeLayout(false);
             this.contacts_tab.PerformLayout();
+            this.compare_box.ResumeLayout(false);
+            this.compare_box.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -715,6 +785,12 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox search_name_box;
+        private System.Windows.Forms.Button compare_button;
+        private System.Windows.Forms.GroupBox compare_box;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.RichTextBox product1_box;
+        private System.Windows.Forms.Button swap_button;
+        private System.Windows.Forms.RichTextBox product2_box;
     }
 }
 

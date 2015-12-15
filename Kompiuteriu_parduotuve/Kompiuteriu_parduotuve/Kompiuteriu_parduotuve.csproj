@@ -75,6 +75,7 @@
     <Compile Include="Category.cs" />
     <Compile Include="Comment.cs" />
     <Compile Include="Commenting.cs" />
+    <Compile Include="Compare.cs" />
     <Compile Include="Contacts.cs" />
     <Compile Include="Database.cs" />
     <Compile Include="Main_Form.cs">

@@ -22,7 +22,7 @@ namespace Kompiuteriu_parduotuve
             }
             catch (Exception ex)
             {
-                MessageBox.Show("4" + ex.Message);
+                MessageBox.Show(ex.Message);
             }
             return DB.dt;
         }
@@ -36,7 +36,7 @@ namespace Kompiuteriu_parduotuve
             }
             catch (Exception ex)
             {
-                MessageBox.Show("3" + ex.Message);
+                MessageBox.Show(ex.Message);
             }
             return DB.dt;
         }
@@ -50,7 +50,7 @@ namespace Kompiuteriu_parduotuve
             }
             catch (Exception ex)
             {
-                MessageBox.Show("1" + ex.Message);
+                MessageBox.Show(ex.Message);
             }
             return DB.dt;
         }
@@ -64,7 +64,21 @@ namespace Kompiuteriu_parduotuve
             }
             catch (Exception ex)
             {
-                MessageBox.Show("2" + ex.Message);
+                MessageBox.Show(ex.Message);
+            }
+            return DB.dt;
+        }
+        public DataTable find_id(int product_id)
+        {
+            try
+            {
+                DB.Connect();
+                DB.adapter = new SqlDataAdapter("SELECT * FROM dbo.Product WHERE ID=" + product_id + "", DB.conn);
+                DB.adapter.Fill(DB.dt);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
             return DB.dt;
         }
