@@ -20,7 +20,7 @@ namespace Kompiuteriu_parduotuve
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            cart_id = Guid.NewGuid().ToString();
+            cart_id = Helper.getNewCartGUID();
             refresh_table();
             refresh_reviews();
             show_contacts();

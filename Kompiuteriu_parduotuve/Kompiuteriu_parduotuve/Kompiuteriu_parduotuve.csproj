@@ -78,6 +78,7 @@
     <Compile Include="Compare.cs" />
     <Compile Include="Contacts.cs" />
     <Compile Include="Database.cs" />
+    <Compile Include="Helper.cs" />
     <Compile Include="Main_Form.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -89,6 +89,14 @@
             this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.admin_orders_Datagrid = new System.Windows.Forms.DataGridView();
+            this.order_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.order_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.order_card_number = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.order_exp_year = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.order_exp_month = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.order_cvc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.order_state = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.order_cart_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.admin_cart_Datagrid = new System.Windows.Forms.DataGridView();
             this.cart_product_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cart_guid = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -101,21 +109,13 @@
             this.add_edit_product_box = new System.Windows.Forms.GroupBox();
             this.comments_reviews_tab = new System.Windows.Forms.TabPage();
             this.orders_tab = new System.Windows.Forms.TabPage();
+            this.label3 = new System.Windows.Forms.Label();
+            this.order_status_box = new System.Windows.Forms.ComboBox();
             this.label22 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.contacts_users_tab = new System.Windows.Forms.TabPage();
             this.contacts_box = new System.Windows.Forms.GroupBox();
             this.users_box = new System.Windows.Forms.GroupBox();
-            this.order_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.order_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.order_card_number = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.order_exp_year = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.order_exp_month = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.order_cvc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.order_state = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.order_cart_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.order_status_box = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.product_grid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.product_comment_datagrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.review_datagrid)).BeginInit();
@@ -660,6 +660,7 @@
             // admin_orders_Datagrid
             // 
             this.admin_orders_Datagrid.AllowUserToAddRows = false;
+            this.admin_orders_Datagrid.AllowUserToDeleteRows = false;
             this.admin_orders_Datagrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.admin_orders_Datagrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.order_id,
@@ -672,10 +673,66 @@
             this.order_cart_id});
             this.admin_orders_Datagrid.Location = new System.Drawing.Point(16, 48);
             this.admin_orders_Datagrid.Name = "admin_orders_Datagrid";
+            this.admin_orders_Datagrid.ReadOnly = true;
             this.admin_orders_Datagrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.admin_orders_Datagrid.Size = new System.Drawing.Size(475, 150);
             this.admin_orders_Datagrid.TabIndex = 55;
             this.admin_orders_Datagrid.SelectionChanged += new System.EventHandler(this.admin_orders_Datagrid_SelectionChanged);
+            // 
+            // order_id
+            // 
+            this.order_id.HeaderText = "ID";
+            this.order_id.Name = "order_id";
+            this.order_id.ReadOnly = true;
+            this.order_id.Visible = false;
+            // 
+            // order_date
+            // 
+            this.order_date.HeaderText = "Data";
+            this.order_date.Name = "order_date";
+            this.order_date.ReadOnly = true;
+            this.order_date.Width = 70;
+            // 
+            // order_card_number
+            // 
+            this.order_card_number.HeaderText = "Kortelės Nr.";
+            this.order_card_number.Name = "order_card_number";
+            this.order_card_number.ReadOnly = true;
+            // 
+            // order_exp_year
+            // 
+            this.order_exp_year.HeaderText = "Metai";
+            this.order_exp_year.Name = "order_exp_year";
+            this.order_exp_year.ReadOnly = true;
+            this.order_exp_year.Width = 50;
+            // 
+            // order_exp_month
+            // 
+            this.order_exp_month.HeaderText = "Mėnuo";
+            this.order_exp_month.Name = "order_exp_month";
+            this.order_exp_month.ReadOnly = true;
+            this.order_exp_month.Width = 50;
+            // 
+            // order_cvc
+            // 
+            this.order_cvc.HeaderText = "CVC";
+            this.order_cvc.Name = "order_cvc";
+            this.order_cvc.ReadOnly = true;
+            this.order_cvc.Width = 50;
+            // 
+            // order_state
+            // 
+            this.order_state.HeaderText = "Būsena";
+            this.order_state.Name = "order_state";
+            this.order_state.ReadOnly = true;
+            this.order_state.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // order_cart_id
+            // 
+            this.order_cart_id.HeaderText = "Krepšelio ID";
+            this.order_cart_id.Name = "order_cart_id";
+            this.order_cart_id.ReadOnly = true;
+            this.order_cart_id.Visible = false;
             // 
             // admin_cart_Datagrid
             // 
@@ -820,6 +877,25 @@
             this.orders_tab.Text = "Užsakymai";
             this.orders_tab.UseVisualStyleBackColor = true;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(220, 207);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(144, 13);
+            this.label3.TabIndex = 61;
+            this.label3.Text = "Pasirinkto užsakymo būsena:";
+            // 
+            // order_status_box
+            // 
+            this.order_status_box.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.order_status_box.FormattingEnabled = true;
+            this.order_status_box.Location = new System.Drawing.Point(370, 204);
+            this.order_status_box.Name = "order_status_box";
+            this.order_status_box.Size = new System.Drawing.Size(121, 21);
+            this.order_status_box.TabIndex = 60;
+            this.order_status_box.SelectedIndexChanged += new System.EventHandler(this.order_status_box_SelectedIndexChanged);
+            // 
             // label22
             // 
             this.label22.AutoSize = true;
@@ -889,79 +965,6 @@
             this.users_box.TabIndex = 55;
             this.users_box.TabStop = false;
             this.users_box.Text = "Vartotojai";
-            // 
-            // order_id
-            // 
-            this.order_id.HeaderText = "ID";
-            this.order_id.Name = "order_id";
-            this.order_id.ReadOnly = true;
-            this.order_id.Visible = false;
-            // 
-            // order_date
-            // 
-            this.order_date.HeaderText = "Data";
-            this.order_date.Name = "order_date";
-            this.order_date.ReadOnly = true;
-            this.order_date.Width = 70;
-            // 
-            // order_card_number
-            // 
-            this.order_card_number.HeaderText = "Kortelės Nr.";
-            this.order_card_number.Name = "order_card_number";
-            this.order_card_number.ReadOnly = true;
-            // 
-            // order_exp_year
-            // 
-            this.order_exp_year.HeaderText = "Metai";
-            this.order_exp_year.Name = "order_exp_year";
-            this.order_exp_year.ReadOnly = true;
-            this.order_exp_year.Width = 50;
-            // 
-            // order_exp_month
-            // 
-            this.order_exp_month.HeaderText = "Mėnuo";
-            this.order_exp_month.Name = "order_exp_month";
-            this.order_exp_month.ReadOnly = true;
-            this.order_exp_month.Width = 50;
-            // 
-            // order_cvc
-            // 
-            this.order_cvc.HeaderText = "CVC";
-            this.order_cvc.Name = "order_cvc";
-            this.order_cvc.ReadOnly = true;
-            this.order_cvc.Width = 50;
-            // 
-            // order_state
-            // 
-            this.order_state.HeaderText = "Būsena";
-            this.order_state.Name = "order_state";
-            this.order_state.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // order_cart_id
-            // 
-            this.order_cart_id.HeaderText = "Krepšelio ID";
-            this.order_cart_id.Name = "order_cart_id";
-            this.order_cart_id.ReadOnly = true;
-            this.order_cart_id.Visible = false;
-            // 
-            // order_status_box
-            // 
-            this.order_status_box.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.order_status_box.FormattingEnabled = true;
-            this.order_status_box.Location = new System.Drawing.Point(370, 204);
-            this.order_status_box.Name = "order_status_box";
-            this.order_status_box.Size = new System.Drawing.Size(121, 21);
-            this.order_status_box.TabIndex = 60;
-            this.order_status_box.SelectedIndexChanged += new System.EventHandler(this.order_status_box_SelectedIndexChanged);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(220, 207);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(144, 13);
-            this.label3.TabIndex = 61;
-            this.label3.Text = "Pasirinkto užsakymo būsena:";
             // 
             // Admin_Form
             // 

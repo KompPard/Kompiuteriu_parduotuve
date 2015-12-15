@@ -45,6 +45,7 @@ namespace Kompiuteriu_parduotuve
         {
             Product product = new Product();
             product.set(product_name_textbox.Text, product_category_comb.SelectedValue.ToString(), product_price_textbox.Text, product_description_textbox.Text);
+            refresh_table();
         }
         private void Admin_form_Load(object sender, EventArgs e)
         {

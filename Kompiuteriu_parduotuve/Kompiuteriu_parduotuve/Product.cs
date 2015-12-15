@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Windows.Forms;
 
 namespace Kompiuteriu_parduotuve
 {
@@ -43,9 +44,17 @@ namespace Kompiuteriu_parduotuve
                   Console.WriteLine(ex);
                   return false;
               }*/
-            DB.Connect();
-            DB.cmd = new System.Data.SqlClient.SqlCommand("INSERT INTO dbo.Product(name,category,price,description) values ('" + name + "','" + category + "','" + price + "','" + description + "')", DB.conn);
-            DB.cmd.ExecuteNonQuery();
+            try
+            {
+                DB.Connect();
+                DB.cmd = new System.Data.SqlClient.SqlCommand("INSERT INTO dbo.Product(name,category,price,description) values ('" + name + "','" + category + "','" + price + "','" + description + "')", DB.conn);
+                DB.cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
         }
         private void delete()
         {
