@@ -119,7 +119,7 @@ namespace Kompiuteriu_parduotuve
             review_datagrid.Rows.Clear();
             using (Commenting comm = new Review())
             {
-                dt = comm.get(dt,1);//1 PLACEHOLDER
+                dt = comm.get(dt,1);//1 Pc
                 foreach (DataRow dr in dt.Rows)
                 {
                     review_datagrid.Rows.Add(dr.ItemArray);

@@ -9,7 +9,7 @@ namespace Kompiuteriu_parduotuve
         string ID, username, password, type;
         public User(Database DB)
         {
-           this.DB = DB; //Agregacija    
+           this.DB = DB;  
         }
         public bool User_conn(string name, string pass)
         {
